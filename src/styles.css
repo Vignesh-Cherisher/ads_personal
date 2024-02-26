@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+@layer base {
+  select {
+    @apply appearance-none w-fit text-sm px-2 bg-transparent
+          text-primary-text cursor-pointer border-solid
+          outline-none focus:outline-none
+  }
+}

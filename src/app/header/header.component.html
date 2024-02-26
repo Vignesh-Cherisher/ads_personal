@@ -1,0 +1,40 @@
+<div class="header w-100 bg-black h-20 p-3 flex font-poppins justify-between">
+
+  <!-- Website Name and Logo -->
+  <div class="logo-appname w-4/12 h-full flex items-center cursor-pointer">
+    <div class="logo">
+      <img
+        src="../../assets/Images/logo.png"
+        alt="Logo"
+        class="min-w-[50px] w-[50px] aspect-square"
+      />
+    </div>
+    <div class="title text-primary-text pl-2 text-xl font-medium">
+      Analytics Dashboard System
+    </div>
+  </div>
+
+  <!-- Upload Field -->
+  <div class="upload-field bg-secondary-bg border-solid border-2 border-primary-color max-w-80 w-4/12 flex justify-between items-center px-2 relative">
+    <div class="bg-transparent text-primary-text w-[82px]">Upload File</div>
+    <input type="file" id="upload-field" class="h-fit absolute opacity-0 w-[82px]"/>
+    <select name="upload-field-document-type" id="upload-field-type" class="custom-select w-14 p-0">
+      <option value="file">File</option>
+      <option value="plugin">Plugin</option>
+    </select>
+    <select name="upload-field-extension-type" id="upload-field-extension" class="custom-select w-14 p-0">
+      <option value="xlsx">.xlsx</option>
+      <option value="xls">.xls</option>
+    </select>
+  </div>
+
+  <!-- User Profile -->
+  <div class="user-profile-container w-3/12 flex justify-between">
+    <div class="aspect-square min-w-12 rounded-full bg-secondary-bg border-solid border-secondary-variant-bg border-2 flex items-center justify-center">
+      <i class="fa-solid fa-clock-rotate-left fa-2xl top-[0.5px] relative" style="color: #c6c8c7;"></i>
+    </div>
+    <div class="aspect-square min-w-12 rounded-full bg-secondary-bg border-solid border-secondary-variant-bg border-2 flex items-center justify-center">
+      <i class="fa-solid fa-clock-rotate-left fa-2xl top-[0.5px] relative" style="color: #c6c8c7;"></i>
+    </div>
+  </div>
+</div>
