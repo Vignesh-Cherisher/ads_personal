@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  @ViewChild('userProfileDropdown') userProfileDropdown: ElementRef;
+
   isInVisualizingMode = false
+  isUserDropdownActive = false
+
+  @HostListener('window:click', ['$event'])
+  public onClick(event: MouseEvent) {
+    if (this.isUserDropdownActive == true && !this.userProfileDropdown.nativeElement.contains(event.target)) {
+      this.isUserDropdownActive = !this.isUserDropdownActive;
+    }
+  }
+
+  swapUserDropdown() {
+    this.isUserDropdownActive = !this.isUserDropdownActive
+  }
 }
