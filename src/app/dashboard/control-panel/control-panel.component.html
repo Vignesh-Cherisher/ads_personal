@@ -1,1 +1,6 @@
-<p>control-panel works!</p>
+<div class="border-solid border-2 border-secondary-variant-bg rounded-s-2xl py-5 px-1.5 cursor-pointer" (click)="collapseControlPanel()">
+  <i *ngIf="!isCollapsed else collapsed" class="fa-solid fa-caret-left" style="color: #32f0dc;"></i>
+  <ng-template #collapsed>
+    <i class="fa-solid fa-caret-right" style="color: #32f0dc;"></i>
+  </ng-template>
+</div>

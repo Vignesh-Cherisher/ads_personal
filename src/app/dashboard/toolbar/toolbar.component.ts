@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './toolbar.component.css'
 })
 export class ToolbarComponent {
+  isCollapsed = false
 
+  collapseToolbar() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }

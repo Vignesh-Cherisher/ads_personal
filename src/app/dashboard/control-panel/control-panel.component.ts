@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './control-panel.component.css'
 })
 export class ControlPanelComponent {
+  isCollapsed: boolean = false
 
+  collapseControlPanel() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }

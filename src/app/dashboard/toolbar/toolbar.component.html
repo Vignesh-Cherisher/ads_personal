@@ -1,32 +1,38 @@
-<div class="bg-primary-bg border-solid border-2 border-secondary-variant-bg rounded-e-xl px-8 py-14">
-  <div class="grid grid-cols-[50px_180px] auto-rows-[48px] text-primary-color gap-x-6 gap-y-12 items-center justify-start">
+<div class="bg-primary-bg border-solid border-2 border-secondary-variant-bg rounded-e-xl px-8 py-14" ngClass="{'hidden': isCollapsed}">
+  <div class="grid grid-cols-[35px_120px] auto-rows-[36px] text-primary-color gap-x-6 gap-y-9 items-center justify-start">
     <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <i class="fa-solid fa-chart-column fa-2xl" style="color: #32f0dc;"></i>
+      <i class="fa-solid fa-chart-column fa-lg" style="color: #32f0dc;"></i>
     </div>
-    <p class="text-2xl font-semibold">Bar Chart</p>
+    <p class="text-lg font-semibold">Bar Chart</p>
     <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <i class="fa-solid fa-chart-line fa-2xl" style="color: #32f0dc;"></i>
+      <i class="fa-solid fa-chart-line fa-lg" style="color: #32f0dc;"></i>
     </div>
-    <p class="text-2xl font-semibold">Line Plot</p>
+    <p class="text-lg font-semibold">Line Plot</p>
     <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <img width="50" height="50" src="https://img.icons8.com/ios/50/32f0dc/scatter-plot.png" alt="scatter-plot"/>
+      <img width="28" height="28" src="https://img.icons8.com/ios/50/32f0dc/scatter-plot.png" alt="scatter-plot"/>
     </div>
-    <p class="text-2xl font-semibold">Scatter Plot</p>
+    <p class="text-lg font-semibold">Scatter Plot</p>
     <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <img width="50" height="50" src="https://img.icons8.com/ios/50/32f0dc/investment-portfolio--v1.png" alt="investment-portfolio--v1"/>
+      <img width="28" height="28" src="https://img.icons8.com/ios/50/32f0dc/investment-portfolio--v1.png" alt="investment-portfolio--v1"/>
     </div>
-    <p class="text-2xl font-semibold">Pie Chart</p>
+    <p class="text-lg font-semibold">Pie Chart</p>
     <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <img width="50" height="50" src="https://img.icons8.com/ios/50/32f0dc/doughnut-chart--v1.png" alt="doughnut-chart--v1"/>
+      <img width="28" height="28" src="https://img.icons8.com/ios/50/32f0dc/doughnut-chart--v1.png" alt="doughnut-chart--v1"/>
     </div>
-    <p class="text-2xl font-semibold">Doughnut</p>
+    <p class="text-lg font-semibold">Doughnut</p>
     <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <img width="50" height="50" src="https://img.icons8.com/ios/50/32f0dc/maximum-value--v1.png" alt="maximum-value--v1"/>
+      <img width="28" height="28" src="https://img.icons8.com/ios/50/32f0dc/maximum-value--v1.png" alt="maximum-value--v1"/>
     </div>
-    <p class="text-2xl font-semibold">Histogram</p>
+    <p class="text-lg font-semibold">Histogram</p>
     <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <img width="50" height="50" src="https://img.icons8.com/ios/50/32f0dc/heat-map.png" alt="heat-map"/>
+      <img width="28" height="28" src="https://img.icons8.com/ios/50/32f0dc/heat-map.png" alt="heat-map"/>
     </div>
-    <p class="text-2xl font-semibold">Heat Map</p>
+    <p class="text-lg font-semibold">Heat Map</p>
   </div>
+</div>
+<div class="border-solid border-2 border-secondary-variant-bg rounded-e-2xl py-5 px-1.5 cursor-pointer" (click)="collapseToolbar()">
+  <i *ngIf="!isCollapsed else collapsed" class="fa-solid fa-caret-right" style="color: #32f0dc;"></i>
+  <ng-template #collapsed>
+    <i class="fa-solid fa-caret-left" style="color: #32f0dc;"></i>
+  </ng-template>
 </div>
