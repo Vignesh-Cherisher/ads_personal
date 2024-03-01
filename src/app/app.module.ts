@@ -17,6 +17,8 @@ import { ChartOptionsComponent } from './dashboard/control-panel/chart-options/c
 import { FileStatisticsComponent } from './dashboard/workspace/file-statistics/file-statistics.component';
 import { ChartTabsComponent } from './dashboard/workspace/chart-tabs/chart-tabs.component';
 import { FileHistoryComponent } from './header/file-history/file-history.component';
+import { LoginComponent } from './login/login.component';
+import { NavigationService } from './Services/navigationService.service';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,14 @@ import { FileHistoryComponent } from './header/file-history/file-history.compone
     ChartOptionsComponent,
     FileStatisticsComponent,
     ChartTabsComponent,
-    FileHistoryComponent
+    FileHistoryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [NavigationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

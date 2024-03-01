@@ -1,23 +1,25 @@
-<div class="border-solid border-secondary-variant-bg border-2 rounded-s-xl pl-6 py-2 h-full border-r-0">
-  <div class="mb-6">
-    <div class="flex items-center space-x-2 cursor-pointer mb-2">
-      <i class="fa-solid fa-chevron-down" style="color: #c6c8c7;"></i>
-      <p class="text-primary-color">Plugin Options</p>
+<div class="flex w-8/12 mx-auto h-full p-8">
+  <div class="border-solid border-secondary-variant-bg border-2 rounded-s-xl pl-6 py-6 border-r-0">
+    <div class="mb-6">
+      <div class="flex items-center space-x-2 cursor-pointer hover:brightness-75 mb-2">
+        <i class="fa-solid fa-chevron-down" style="color: #c6c8c7;"></i>
+        <p class="text-primary-color">Plugin Options</p>
+      </div>
+      <!-- Plugin options -->
+      <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Upload New Plugin</p>
+      <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Available Plugins</p>
     </div>
-    <!-- Plugin options -->
-    <p class="px-8 text-primary-text">Upload New Plugin</p>
-    <p class="px-8 text-primary-text">Available Plugins</p>
-  </div>
 
-  <!-- File options menu-->
-  <div class="mb-6">
-    <div class="flex items-center space-x-2 cursor-pointer mb-2">
-      <i class="fa-solid fa-chevron-down" style="color: #c6c8c7;"></i>
-      <p class="text-primary-color">File Options</p>
+    <!-- File options menu-->
+    <div class="mb-6">
+      <div class="flex items-center space-x-2 cursor-pointer hover:brightness-75 mb-2">
+        <i class="fa-solid fa-chevron-down" style="color: #c6c8c7;"></i>
+        <p class="text-primary-color">File Options</p>
+      </div>
+      <!-- File options -->
+      <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Upload New File</p>
+      <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Saved Files</p>
     </div>
-    <!-- File options -->
-    <p class="px-8 text-primary-text">Upload New File</p>
-    <p class="px-8 text-primary-text">Saved Files</p>
   </div>
+  <app-available-plugins class="w-8/12"></app-available-plugins>
 </div>
-<app-available-plugins class="w-8/12"></app-available-plugins>

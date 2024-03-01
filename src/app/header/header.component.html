@@ -1,7 +1,7 @@
-<div class="header w-100 bg-black h-16 p-3 flex font-poppins justify-between border-b-2 border-b-secondary-variant-bg items-center">
+<div class="header w-full bg-black p-3 flex font-poppins justify-between border-b-2 border-b-secondary-variant-bg items-center h-full">
 
   <!-- Website Name and Logo -->
-  <div class="logo-appname w-fit md:w-4/12 h-full flex items-center cursor-pointer hover:brightness-75 max-w-[280px]">
+  <div class="logo-appname w-fit md:w-5/12 h-full flex items-center cursor-pointer hover:brightness-75 max-w-[350px]">
     <div class="logo">
       <img
         src="../../assets/Images/logo.png"
@@ -14,40 +14,33 @@
     </div>
   </div>
 
-  <!-- Upload Field -->
-  <div class="upload-field bg-secondary-bg border-solid border-2 border-primary-color max-w-56 w-4/12 hidden md:flex justify-between items-center px-2 relative h-10">
-    <div class="bg-transparent text-primary-text w-18 font-light text-xs">Upload File</div>
-    <input type="file" id="upload-field" class="h-fit absolute opacity-0 w-16"/>
-    <select name="upload-field-document-type" id="upload-field-type" class="custom-select w-12 p-0">
-      <option value="file">File</option>
-      <option value="plugin">Plugin</option>
-    </select>
-    <select name="upload-field-extension-type" id="upload-field-extension" class="custom-select w-12 p-0">
-      <option value="xlsx">.xlsx</option>
-      <option value="xls">.xls</option>
-    </select>
-  </div>
-
   <!-- User Profile -->
   <div class="user-profile-container w-fit flex justify-between space-x-2 pl-8 pr-4 items-center">
-    <div class="aspect-square min-w-9 min-h-9 rounded-full bg-secondary-bg border-solid border-secondary-variant-bg border-2 flex items-center justify-center cursor-pointer hover:brightness-75">
+    <!-- <div class="aspect-square min-w-10 min-h-10 rounded-full bg-secondary-bg border-solid border-secondary-variant-bg border-2 flex items-center justify-center cursor-pointer hover:brightness-75">
       <i class="fa-solid fa-clock-rotate-left fa-lg top-[0.5px] relative" style="color: #c6c8c7;"></i>
-    </div>
+    </div> -->
     <div class="w-fit flex justify-between space-x-2 items-center relative" (click)="swapUserDropdown()" #userProfileDropdown>
-      <div class="aspect-square min-w-9 rounded-full bg-secondary-bg border-solid border-secondary-variant-bg border-2 flex items-center justify-center cursor-pointer hover:brightness-75">
-        <p class="text-secondary-text relative">DU</p>
+      <div class="aspect-square min-w-10 rounded-full bg-secondary-bg border-solid border-secondary-variant-bg border-2 flex items-center justify-center cursor-pointer hover:brightness-75">
+        <p class="text-secondary-text relative text-lg">DU</p>
       </div>
       <div class="text-secondary-text py-2 relative text-sm">
         <div class="md:flex justify-between cursor-pointer hidden items-center">
-          <p class="font-semibold w-full">Dummy User</p>
-          <i class="fa-solid fa-caret-down w-fit" style="color: #ffffff;"></i>
+          <p class="font-semibold w-full mr-1">Dummy User</p>
+          <!--  -->
         </div>
         <div class="font-extralight hidden md:block">
           <em>dummyuser&#64;abc.com</em>
         </div>
       </div>
-      <div class="bg-secondary-bg border-solid border-[1px] border-secondary-variant-bg p-1 hover:brightness-75 cursor-pointer absolute w-18 rounded-sm text-secondary-text top-8 md:w-36 right-0" *ngIf="isUserDropdownActive">
-        <p>Logout</p>
+      <div class="bg-primary-bg border-solid border-[1px] border-secondary-variant-bg p-1 hover:brightness-75 cursor-pointer absolute w-18 rounded-sm text-secondary-text top-14 md:w-full right-0 space-y-1" *ngIf="isUserDropdownActive">
+        <div class="flex items-center space-x-2 p-2">
+          <i class="fa-solid fa-clock-rotate-left fa-sm" style="color: #ffffff;"></i>
+          <p>Saved Files</p>
+        </div>
+        <div class="flex items-center space-x-2 p-2">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <p>Logout</p>
+        </div>
       </div>
     </div>
   </div>
