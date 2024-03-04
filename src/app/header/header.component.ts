@@ -11,6 +11,7 @@ export class HeaderComponent {
   isInVisualizingMode = false
   isUserDropdownActive = false
 
+  user:string = localStorage.getItem("user")
   @HostListener('window:click', ['$event'])
   public onClick(event: MouseEvent) {
     if (this.isUserDropdownActive == true && !this.userProfileDropdown.nativeElement.contains(event.target)) {
