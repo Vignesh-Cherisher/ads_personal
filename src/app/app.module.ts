@@ -16,7 +16,6 @@ import { SavedFilesComponent } from './dashboard/upload-file-and-plugin/saved-fi
 import { ChartOptionsComponent } from './dashboard/control-panel/chart-options/chart-options.component';
 import { ChartTabsComponent } from './dashboard/workspace/chart-tabs/chart-tabs.component';
 import { FileHistoryComponent } from './header/file-history/file-history.component';
-import { LoginComponent } from './login/login.component';
 import { NavigationService } from './Services/navigationService.service';
 
 @NgModule({
@@ -35,7 +34,6 @@ import { NavigationService } from './Services/navigationService.service';
     ChartOptionsComponent,
     ChartTabsComponent,
     FileHistoryComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,

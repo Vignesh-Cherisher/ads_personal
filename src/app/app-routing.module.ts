@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UploadFileAndPluginComponent } from './dashboard/upload-file-and-plugin/upload-file-and-plugin.component';
 import { WorkspaceComponent } from './dashboard/workspace/workspace.component';
-import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
