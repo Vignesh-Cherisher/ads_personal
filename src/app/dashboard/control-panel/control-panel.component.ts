@@ -7,8 +7,13 @@ import { Component } from '@angular/core';
 })
 export class ControlPanelComponent {
   isCollapsed: boolean = false
+  isDroppedDown: boolean = false
 
   collapseControlPanel() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  triggerDropDown() {
+    this.isDroppedDown = !this.isDroppedDown;
   }
 }
