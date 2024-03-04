@@ -4,23 +4,27 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UploadFileAndPluginComponent } from './dashboard/upload-file-and-plugin/upload-file-and-plugin.component';
 import { WorkspaceComponent } from './dashboard/workspace/workspace.component';
 import { LoginComponent } from './Authentication/login/login.component';
+import { AuthGuard } from './Authentication/auth.guard';
 
 const routes: Routes = [
   {
     path:'',
-    component:LoginComponent
+    component:LoginComponent,
   },
   {
     path:'dashboard',
     component: DashboardComponent,
+    canActivate:[AuthGuard],
     children: [
       {
         path: 'plugin-file-view',
-        component: UploadFileAndPluginComponent
+        component: UploadFileAndPluginComponent,
+        canActivate:[AuthGuard]
       },
       {
         path: 'chart-view',
-        component: WorkspaceComponent
+        component: WorkspaceComponent,
+        canActivate:[AuthGuard]
       }
     ]
   }
