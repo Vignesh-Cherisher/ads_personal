@@ -1,7 +1,18 @@
+import { BehaviorSubject, Observable } from "rxjs";
+
 export class NavigationService {
-  isNewLogin: boolean = true;
+  private isNewLogin = new BehaviorSubject<boolean>(false);
+  
+
+  checkNewLogin():Observable<boolean> {
+    return this.isNewLogin.asObservable();
+  }
 
   showSidePanels(){
-    this.isNewLogin = false;
+    this.isNewLogin.next(false);
+  }
+
+  triggerDropDown() {
+
   }
 }

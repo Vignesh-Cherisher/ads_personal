@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from '../../Services/navigationService.service';
 
 @Component({
   selector: 'app-upload-file-and-plugin',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class UploadFileAndPluginComponent {
 
+
+  constructor(private navigationService: NavigationService){
+
+  }
+
+  showSidePanels() {
+    this.navigationService.showSidePanels();
+  }
 }

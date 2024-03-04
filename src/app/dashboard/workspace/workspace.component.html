@@ -1,12 +1,25 @@
-  <!-- Upload Field -->
-  <div class="upload-field bg-secondary-bg border-solid border-2 border-primary-color max-w-56 w-4/12 hidden md:flex justify-between items-center px-2 relative h-10">
-    <button type="file" id="upload-field" class="bg-transparent text-primary-text w-18 font-light text-xs">Upload</button>
-    <select name="upload-field-document-type" id="upload-field-type" class="custom-select w-12 p-0">
+<!-- Upload Field -->
+<div class="px-4 h-full">
+  <div class="flex space-x-2 py-2">
+    <div class="bg-secondary-bg border-solid border-2 border-secondary-variant-bg px-2 py-1 relative w-fit">
+      <button class="bg-transparent text-primary-text font-light text-sm hover:brightness-75">Save All Charts</button>
+    </div>
+    <div class="bg-secondary-bg border-solid border-2 border-secondary-variant-bg px-2 py-1 relative w-fit">
+      <button class="bg-transparent text-primary-text font-light text-sm hover:brightness-75">Close All Charts</button>
+    </div>
+    <div class="upload-field bg-secondary-bg border-solid border-2 border-secondary-variant-bg px-2 py-1 relative w-fit">
+      <button id="upload-field" class="bg-transparent text-primary-text font-light text-sm hover:brightness-75">Upload</button>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 auto-rows-auto overflow-scroll gap-2 h-5/6">
+    <app-chart-tabs *ngFor="let chart of chartList" [chartData]="chart"></app-chart-tabs>
+  </div>
+    <!-- <select name="upload-field-document-type" id="upload-field-type" class="custom-select w-12 p-0">
       <option value="file">File</option>
       <option value="plugin">Plugin</option>
     </select>
     <select name="upload-field-extension-type" id="upload-field-extension" class="custom-select w-12 p-0">
       <option value="xlsx">.xlsx</option>
       <option value="xls">.xls</option>
-    </select>
-  </div>
+    </select> -->
+</div>

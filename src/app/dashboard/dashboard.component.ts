@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationService } from '../Services/navigationService.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,11 +8,11 @@ import { NavigationService } from '../Services/navigationService.service';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  constructor(private navigationService: NavigationService) {
+  isNewLogin:Observable<boolean>
 
-  }
+  constructor(private navigationService: NavigationService) {  }
 
-  swapSidePanels() {
-    this.navigationService.swapSidePanels()
+  ngOnInit(): void {
+    this.isNewLogin = this.navigationService.checkNewLogin()
   }
 }

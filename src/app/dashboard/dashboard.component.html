@@ -1,11 +1,11 @@
 <div class="w-full h-[90%] block">
   <button class="bg-white h-[5%]" routerLink="plugin-file-view">Navigate</button>
-  <div class="flex bg-primary-bg w-full h-[95%] item" [ngClass]="{'justify-center': isNewLogin, 'justify-between': !isNewLogin}">
-    <app-toolbar class="flex items-center" *ngIf="!isNewLogin"></app-toolbar>
+  <div class="flex bg-primary-bg w-full h-[95%] item" [ngClass]="{'justify-center': (isNewLogin | async), 'justify-between': !(isNewLogin | async)}">
+    <app-toolbar class="flex items-center" *ngIf="!(isNewLogin | async)"></app-toolbar>
     <!-- <app-upload-file-and-plugin></app-upload-file-and-plugin> -->
     <div class="w-full h-full">
       <router-outlet></router-outlet>
     </div>
-    <app-control-panel class="right-0 flex items-center w-fit" *ngIf="!isNewLogin"></app-control-panel>
+    <app-control-panel class="right-0 flex items-center w-fit" *ngIf="!(isNewLogin | async)"></app-control-panel>
   </div>
 </div>

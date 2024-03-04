@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-chart-tabs',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './chart-tabs.component.css'
 })
 export class ChartTabsComponent {
-
+  @Input() chartData: string
 }

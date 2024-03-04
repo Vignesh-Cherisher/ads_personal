@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './workspace.component.css'
 })
 export class WorkspaceComponent {
-
+  chartList: string[] = ['Bar1', 'Bar2', 'Bar3'];
 }

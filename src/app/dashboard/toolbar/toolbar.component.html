@@ -1,38 +1,17 @@
-<div class="bg-primary-bg border-solid border-2 border-secondary-variant-bg rounded-e-xl px-8 py-14" [ngClass]="{'hidden': isCollapsed}">
-  <div class="grid grid-cols-[35px_120px] auto-rows-[36px] text-primary-color gap-x-6 gap-y-9 items-center justify-start">
-    <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <i class="fa-solid fa-chart-column fa-lg" style="color: #32f0dc;"></i>
+<div class="bg-primary-bg border-solid border-r-2 border-secondary-variant-bg pl-4 pr-8 py-8 h-full" [ngClass]="{'hidden': isCollapsed}">
+  <div class="flex flex-col text-primary-color justify-start space-y-6">
+    <div class="flex h-9 space-x-2 cursor-pointer hover:brightness-75" *ngFor="let chartType of chartTypes">
+      <div class="aspect-square min-w-9 bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center ">
+        <img width="28" height="28" src="{{ chartType.iconValue }}" alt="{{ chartType.iconAltValue }}"/>
+      </div>
+      <p class="text-lg font-semibold w-fit whitespace-nowrap">{{ chartType.chartName }}</p>
     </div>
-    <p class="text-lg font-semibold">Bar Chart</p>
-    <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <i class="fa-solid fa-chart-line fa-lg" style="color: #32f0dc;"></i>
-    </div>
-    <p class="text-lg font-semibold">Line Plot</p>
-    <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <img width="28" height="28" src="https://img.icons8.com/ios/50/32f0dc/scatter-plot.png" alt="scatter-plot"/>
-    </div>
-    <p class="text-lg font-semibold">Scatter Plot</p>
-    <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <img width="28" height="28" src="https://img.icons8.com/ios/50/32f0dc/investment-portfolio--v1.png" alt="investment-portfolio--v1"/>
-    </div>
-    <p class="text-lg font-semibold">Pie Chart</p>
-    <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <img width="28" height="28" src="https://img.icons8.com/ios/50/32f0dc/doughnut-chart--v1.png" alt="doughnut-chart--v1"/>
-    </div>
-    <p class="text-lg font-semibold">Doughnut</p>
-    <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <img width="28" height="28" src="https://img.icons8.com/ios/50/32f0dc/maximum-value--v1.png" alt="maximum-value--v1"/>
-    </div>
-    <p class="text-lg font-semibold">Histogram</p>
-    <div class="aspect-square min-w-full bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center">
-      <img width="28" height="28" src="https://img.icons8.com/ios/50/32f0dc/heat-map.png" alt="heat-map"/>
-    </div>
-    <p class="text-lg font-semibold">Heat Map</p>
+    <!-- grid grid-cols-[35px_120px] auto-rows-[36px] -->
   </div>
 </div>
 <div class="border-solid border-2 border-secondary-variant-bg rounded-e-2xl py-5 px-1.5 cursor-pointer" (click)="collapseToolbar()">
-  <i *ngIf="!isCollapsed else collapsed" class="fa-solid fa-caret-right" style="color: #32f0dc;"></i>
+  <i *ngIf="!isCollapsed else collapsed" class="fa-solid fa-caret-left" style="color: #32f0dc;"></i>
   <ng-template #collapsed>
-    <i class="fa-solid fa-caret-left" style="color: #32f0dc;"></i>
+    <i class="fa-solid fa-caret-right" style="color: #32f0dc;"></i>
   </ng-template>
 </div>

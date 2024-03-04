@@ -14,7 +14,6 @@ import { UploadFileAndPluginComponent } from './dashboard/upload-file-and-plugin
 import { UploadFileComponent } from './dashboard/upload-file-and-plugin/upload-file/upload-file.component';
 import { SavedFilesComponent } from './dashboard/upload-file-and-plugin/saved-files/saved-files.component';
 import { ChartOptionsComponent } from './dashboard/control-panel/chart-options/chart-options.component';
-import { FileStatisticsComponent } from './dashboard/workspace/file-statistics/file-statistics.component';
 import { ChartTabsComponent } from './dashboard/workspace/chart-tabs/chart-tabs.component';
 import { FileHistoryComponent } from './header/file-history/file-history.component';
 import { LoginComponent } from './login/login.component';
@@ -34,7 +33,6 @@ import { NavigationService } from './Services/navigationService.service';
     UploadFileComponent,
     SavedFilesComponent,
     ChartOptionsComponent,
-    FileStatisticsComponent,
     ChartTabsComponent,
     FileHistoryComponent,
     LoginComponent
