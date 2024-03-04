@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ChartService } from '../../Services/chartService';
 
 @Component({
   selector: 'app-workspace',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './workspace.component.css'
 })
 export class WorkspaceComponent {
-  chartList: string[] = ['Bar1', 'Bar2', 'Bar3'];
+  chartList: Observable<string[]>
+
+  constructor(private chartService: ChartService) { }
+
+  ngOnInit(): void {
+    this.chartService.getChartList()
+      .subscribe(chartList => { this.chartList = chartList; console.log(this.chartList); })
+  }
 }

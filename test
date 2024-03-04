@@ -1,46 +1,42 @@
-Weekly Project Implementation Report - Week 6:
+Weekly Project Implementation Report - Week (7):
 
-1. User Registration and Profile Creation:
-   - Software: Enhanced the user registration module to allow seamless profile creation, incorporating feedback from project assessors.
-   - Hardware: Reviewed and modified the use of secure hardware modules for storing and processing user profile information based on recommendations from the project supervisor and assessors.
+1. Comparison of Proposed Method/Idea/Architecture with Existing Systems:
 
-2. Password Creation and Encryption:
-   - Conducted an in-depth review of the SHA256 algorithm's cryptographic properties for password hashing and verification, incorporating insights from project assessors.
-   - Revised the password creation and encryption mechanisms to align with the recommended best practices, ensuring robust security against potential vulnerabilities.
+   - Performance Metrics:
+     1. Security: Evaluate the level of security provided by the proposed method/idea/architecture compared to existing systems.
+     2. Scalability: Assess the scalability of the proposed solution in handling increasing numbers of users and password entries.
+     3. Usability: Compare the user experience and ease of use between the proposed system and existing solutions.
+     4. Efficiency: Measure the efficiency of operations such as password storage, retrieval, and authentication in the proposed system against existing systems.
+     5. Reliability: Evaluate the reliability and robustness of the proposed architecture in maintaining data integrity and availability.
 
-3. Multi-Factor Authentication (MFA):
-   - Software: Integrated additional MFA options such as SMS codes and biometrics during login, addressing suggestions provided by project assessors.
-   - Hardware: Adjusted the implementation of secure hardware tokens for MFA to enhance authentication based on feedback from the project supervisor.
+2. Comparison Process:
 
-4. Single Sign-On (SSO):
-   - Software: Implemented an SSO module for seamless access to multiple services, incorporating suggestions from project assessors to enhance usability and security.
-   - Hardware: Reviewed and modified the use of secure hardware components for managing SSO tokens based on recommendations from the project supervisor.
+   - Security:
+     - Assess the cryptographic strength of password hashing algorithms used in the proposed system compared to existing solutions.
+     - Evaluate the resistance against common attacks such as brute force attacks and password cracking techniques.
 
-5. Password Storage and Retrieval:
-   - Software: Strengthened password storage mechanisms by implementing strong hashing algorithms (e.g., bcrypt) with salt, in accordance with recommendations from project assessors.
-   - Hardware: Optimized the use of secure hardware elements for password retrieval and decryption based on feedback from the project supervisor.
+   - Scalability:
+     - Analyze the ability of the proposed blockchain-based architecture to scale with increasing user and password storage demands.
+     - Compare the performance under varying loads and determine the system's ability to handle concurrent access.
 
-6. Password Policies and Complexity:
-   - Software: Implemented customizable password policies, allowing administrators to set and enforce stringent password complexity requirements, incorporating feedback from project assessors.
-   - Hardware: Enhanced hardware-based checks for password complexity to align with recommended security standards, as suggested by the project supervisor.
+   - Usability:
+     - Conduct user surveys or usability tests to gather feedback on the proposed system's interface, features, and overall user experience.
+     - Compare user satisfaction and ease of use with existing password management systems.
 
-7. Secure Communication:
-   - Software: Ensured all communication is encrypted using HTTPS, addressing recommendations from project assessors to enhance data security during transmission.
-   - Hardware: Reviewed and adjusted the use of hardware security modules for secure key management based on feedback from the project supervisor.
+   - Efficiency:
+     - Measure the time taken for password storage, retrieval, and authentication processes in both the proposed and existing systems.
+     - Analyze resource utilization such as CPU and memory usage under different scenarios.
 
-8. User Management:
-   - Software: Implemented account lockout policies for enhanced security, incorporating suggestions from project assessors to mitigate potential security threats.
-   - Hardware: Enhanced the utilization of secure hardware for user activity logging and monitoring based on recommendations from the project supervisor.
+   - Reliability:
+     - Evaluate the fault tolerance and resilience of the proposed system against potential failures such as network outages or server crashes.
+     - Compare data consistency and availability guarantees between the proposed and existing systems.
 
-9. Password Recovery and Reset:
-   - Software: Developed secure recovery options (e.g., MFA, email verification) for password reset, addressing recommendations from project assessors to improve user experience and security.
-   - Hardware: Adjusted the implementation of secure hardware elements for handling password reset tokens based on feedback from the project supervisor.
+3. Comparison Results:
 
-10. Password Hashing and Smart Contracts Security:
-    - Implemented strong password hashing algorithms (e.g., bcrypt) for securely storing user credentials within the blockchain, incorporating feedback from project assessors.
-    - Ensured the use of secure cryptographic functions and hashing algorithms in smart contracts to protect logic and data integrity, based on recommendations from the project supervisor.
+   - Security: The proposed system offers enhanced security through blockchain-based decentralized storage and SHA256-based authentication, providing better resistance against password-related attacks compared to traditional centralized systems.
+   - Scalability: Initial tests indicate that the proposed architecture exhibits promising scalability, with the blockchain's distributed nature allowing for efficient scaling as user and password data grow over time.
+   - Usability: User feedback suggests that the proposed system offers a user-friendly interface and intuitive features, comparable to existing password management solutions, enhancing user adoption and satisfaction.
+   - Efficiency: Performance tests show that the proposed system maintains efficient operations for password storage, retrieval, and authentication, with resource utilization within acceptable limits compared to existing systems.
+   - Reliability: The proposed system demonstrates high reliability and fault tolerance, leveraging blockchain's immutable nature to ensure data integrity and availability even in the face of network disruptions or hardware failures.
 
-11. Digital Signatures:
-    - Integrated robust cryptographic hashing algorithms for creating and verifying digital signatures to ensure authenticity and integrity of transactions on the blockchain, incorporating suggestions from project assessors.
-
-By incorporating and modifying the project work based on suggestions provided by project assessors along with the project supervisor, the Advanced Password Management System (APMS) is poised to achieve enhanced security, usability, and reliability. These revisions align the project with best practices and industry standards, ensuring its effectiveness in addressing contemporary password management challenges.
+By comparing the proposed method/idea/architecture with existing systems across various performance metrics, we gain valuable insights into the strengths and areas for improvement of our solution. This comparison informs our ongoing efforts to develop a superior Advanced Password Management System that meets the evolving needs of users in terms of security, scalability, usability, efficiency, and reliability.

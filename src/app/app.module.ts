@@ -20,8 +20,9 @@ import { NavigationService } from './Services/navigationService.service';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
 import { AuthService } from './Authentication/auth.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ChartService } from './Services/chartService';
 
 @NgModule({
   declarations: [
@@ -46,9 +47,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [NavigationService,AuthService],
+  providers: [NavigationService,AuthService,ChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

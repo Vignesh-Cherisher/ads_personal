@@ -1,13 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild, viewChild } from '@angular/core';
+import { ChartService } from '../../Services/chartService';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-control-panel',
   templateUrl: './control-panel.component.html',
   styleUrl: './control-panel.component.css'
 })
-export class ControlPanelComponent {
-  isCollapsed: boolean = false
-  isDroppedDown: boolean = false
+export class ControlPanelComponent implements OnInit{
+  isCollapsed: boolean = false;
+  isDroppedDown: boolean = true;
+  chartFields: string[];
+  @ViewChild('chartConfigForm') chartConfigForm: FormGroup;
+
+  constructor(private chartService: ChartService) { }
+
+  ngOnInit(): void {
+    this.chartFields = this.chartService.getChartFields()
+  }
 
   collapseControlPanel() {
     this.isCollapsed = !this.isCollapsed;
@@ -15,5 +25,10 @@ export class ControlPanelComponent {
 
   triggerDropDown() {
     this.isDroppedDown = !this.isDroppedDown;
+  }
+
+  submitChartConfig() {
+    console.log(this.chartConfigForm.value)
+    this.chartConfigForm.reset()
   }
 }

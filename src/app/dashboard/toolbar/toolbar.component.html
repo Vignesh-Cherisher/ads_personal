@@ -1,6 +1,6 @@
 <div class="bg-primary-bg border-solid border-r-2 border-secondary-variant-bg pl-4 pr-8 py-8 h-full" [ngClass]="{'hidden': isCollapsed}">
   <div class="flex flex-col text-primary-color justify-start space-y-6">
-    <div class="flex h-9 space-x-2 cursor-pointer hover:brightness-75" *ngFor="let chartType of chartTypes">
+    <div class="flex h-9 space-x-2 cursor-pointer hover:brightness-75" *ngFor="let chartType of chartTypes" (click)="createChart(chartType.chartTypeValue)">
       <div class="aspect-square min-w-9 bg-secondary-bg border-2 border-secondary-variant-bg flex items-center justify-center ">
         <img width="28" height="28" src="{{ chartType.iconValue }}" alt="{{ chartType.iconAltValue }}"/>
       </div>
