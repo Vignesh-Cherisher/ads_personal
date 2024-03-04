@@ -17,6 +17,11 @@ import { ChartOptionsComponent } from './dashboard/control-panel/chart-options/c
 import { ChartTabsComponent } from './dashboard/workspace/chart-tabs/chart-tabs.component';
 import { FileHistoryComponent } from './header/file-history/file-history.component';
 import { NavigationService } from './Services/navigationService.service';
+import { LoginComponent } from './Authentication/login/login.component';
+import { RegisterComponent } from './Authentication/register/register.component';
+import { AuthService } from './Authentication/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,12 +39,16 @@ import { NavigationService } from './Services/navigationService.service';
     ChartOptionsComponent,
     ChartTabsComponent,
     FileHistoryComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [NavigationService],
+  providers: [NavigationService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
