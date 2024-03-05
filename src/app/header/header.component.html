@@ -25,11 +25,11 @@
       </div>
       <div class="text-secondary-text py-2 relative text-sm">
         <div class="md:flex justify-between cursor-pointer hidden items-center">
-          <p class="font-semibold w-full mr-1">Dummy User</p>
+          <p class="font-semibold w-full mr-1">{{localstorage.getItem(user)}}</p>
           <!--  -->
         </div>
         <div class="font-extralight hidden md:block">
-          <em>dummyuser&#64;abc.com</em>
+          <em>{{localstorage.getItem(email)}}</em>
         </div>
       </div>
       <div class="bg-primary-bg border-solid border-[1px] border-secondary-variant-bg p-1 hover:brightness-75 cursor-pointer absolute w-18 rounded-sm text-secondary-text top-14 md:w-full right-0 space-y-1" *ngIf="isUserDropdownActive">

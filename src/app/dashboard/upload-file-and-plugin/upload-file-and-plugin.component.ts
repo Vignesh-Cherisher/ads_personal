@@ -8,6 +8,7 @@ import { NavigationService } from '../../Services/navigationService.service';
 })
 export class UploadFileAndPluginComponent {
 
+  selected:string = "avail-plugin"
 
   constructor(private navigationService: NavigationService){
 

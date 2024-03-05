@@ -1,1 +1,9 @@
-<p>upload-file works!</p>
+<div class="border-solid border-l-0 border-2 border-secondary-variant-bg  bg-secondary-bg pl-2 pr-10 rounded-e-xl py-4 relative text-sm h-full">
+    <h1 class="text-primary-text font-semibold text-lg">Upload a File</h1>
+    <form [formGroup]="fileForm" (ngSubmit)="onSubmit()">
+        <input type="file" formControlName="file">
+        <button type="submit">Upload</button>
+      </form>
+    <ng-content></ng-content>
+</div>
+  

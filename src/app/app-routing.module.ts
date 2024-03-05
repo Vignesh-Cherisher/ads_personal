@@ -5,6 +5,7 @@ import { UploadFileAndPluginComponent } from './dashboard/upload-file-and-plugin
 import { WorkspaceComponent } from './dashboard/workspace/workspace.component';
 import { LoginComponent } from './Authentication/login/login.component';
 import { AuthGuard } from './Authentication/auth.guard';
+import { RegisterComponent } from './Authentication/register/register.component';
 
 const routes: Routes = [
   {
@@ -12,19 +13,23 @@ const routes: Routes = [
     component:LoginComponent,
   },
   {
+    path:'register',
+    component:RegisterComponent
+  },
+  {
     path:'dashboard',
     component: DashboardComponent,
-    canActivate:[AuthGuard],
+    // canActivate:[AuthGuard],
     children: [
       {
         path: 'plugin-file-view',
         component: UploadFileAndPluginComponent,
-        canActivate:[AuthGuard]
+        // canActivate:[AuthGuard]
       },
       {
         path: 'chart-view',
         component: WorkspaceComponent,
-        canActivate:[AuthGuard]
+        // canActivate:[AuthGuard]
       }
     ]
   }

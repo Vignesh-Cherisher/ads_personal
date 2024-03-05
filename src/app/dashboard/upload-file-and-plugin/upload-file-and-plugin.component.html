@@ -7,7 +7,7 @@
       </div>
       <!-- Plugin options -->
       <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Upload New Plugin</p>
-      <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Available Plugins</p>
+      <p class="px-8 text-primary-text cursor-pointer hover:brightness-75" (click)="selected ='avail-plugin'">Available Plugins</p>
     </div>
 
     <!-- File options menu-->
@@ -17,11 +17,14 @@
         <p class="text-primary-color">File Options</p>
       </div>
       <!-- File options -->
-      <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Upload New File</p>
+      <p class="px-8 text-primary-text cursor-pointer hover:brightness-75" (click)="selected = 'upload-file'">Upload New File</p>
       <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Saved Files</p>
     </div>
   </div>
-  <app-available-plugins class="w-8/12">
+  <app-available-plugins class="w-8/12" *ngIf="selected === 'avail-plugin'">
     <button class="bg-primary-color rounded-md px-4 py-2 font-semibold absolute right-3 bottom-3 hover:brightness-90" routerLink="/chart-view" (click)="showSidePanels()">Continue</button>
   </app-available-plugins>
+  <app-upload-file class="w-8/12" *ngIf="selected === 'upload-file'">
+    <button class="bg-primary-color rounded-md px-4 py-2 font-semibold absolute right-3 bottom-3 hover:brightness-90" routerLink="/chart-view" (click)="showSidePanels()">Continue</button>
+  </app-upload-file>
 </div>
