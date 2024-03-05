@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, viewChild } from '@angular/core';
-import { ChartService } from '../../Services/chartService';
+import { ChartService } from '../../Services/Chart.service';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -28,7 +28,8 @@ export class ControlPanelComponent implements OnInit{
   }
 
   submitChartConfig() {
-    console.log(this.chartConfigForm.value)
+    console.log(this.chartConfigForm.value);
+    this.chartService.configureChart(this.chartConfigForm.value)
     this.chartConfigForm.reset()
   }
 }

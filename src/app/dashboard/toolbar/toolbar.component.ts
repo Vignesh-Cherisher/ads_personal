@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChartService } from '../../Services/chartService';
+import { ChartService } from '../../Services/Chart.service';
 
 @Component({
   selector: 'app-toolbar',

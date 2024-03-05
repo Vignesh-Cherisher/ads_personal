@@ -30,9 +30,9 @@ export class LoginComponent {
       username: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(20)]],
       password: ['', this.passwordValidator]
     });
-    setTimeout(()=>{
-      localStorage.setItem("user","user")
-    },5000)
+    // setTimeout(()=>{
+    //   localStorage.setItem("user","user")
+    // },5000)
   }
 
   get f() { return this.loginForm.controls; }
