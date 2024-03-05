@@ -22,9 +22,9 @@
     </div>
   </div>
   <app-available-plugins class="w-8/12" *ngIf="selected === 'avail-plugin'">
-    <button class="bg-primary-color rounded-md px-4 py-2 font-semibold absolute right-3 bottom-3 hover:brightness-90" routerLink="/chart-view" (click)="showSidePanels()">Continue</button>
+    <button class="bg-primary-color rounded-md px-4 py-2 font-semibold absolute right-3 bottom-3 hover:brightness-90" routerLink="/dashboard/chart-view" (click)="showSidePanels()">Continue</button>
   </app-available-plugins>
   <app-upload-file class="w-8/12" *ngIf="selected === 'upload-file'">
-    <button class="bg-primary-color rounded-md px-4 py-2 font-semibold absolute right-3 bottom-3 hover:brightness-90" routerLink="/chart-view" (click)="showSidePanels()">Continue</button>
+    <button class="bg-primary-color rounded-md px-4 py-2 font-semibold absolute right-3 bottom-3 hover:brightness-90" routerLink="/dashboard/chart-view" (click)="showSidePanels()">Continue</button>
   </app-upload-file>
 </div>
