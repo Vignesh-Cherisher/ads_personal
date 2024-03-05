@@ -19,7 +19,7 @@ export class LoginComponent {
       Validators.minLength(8), // Minimum length of 8 characters
       Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/) // Pattern that enforces the required complexity rules
     ]);
-  
+
   constructor(private formBuilder: FormBuilder,private authService:AuthService,private route:Router) { }
 
   ngOnInit(): void {
@@ -47,14 +47,16 @@ export class LoginComponent {
                     this.loginForm.reset()
                     this.route.navigate(['dashboard/plugin-file-view'])
                     this.loading = false
-                    setTimeout(() => { 
+                    setTimeout(() => {
                       this.successMessage = '';
                    }, 3000)
                 },
-                error:(error) => {
-                    this.errorMessage = error
-                    this.loading = false
-                    setTimeout(() => { this.errorMessage = ''; }, 3000)
+                  error: (error) => {
+
+                      this.errorMessage = error
+                      this.loading = false
+                      setTimeout(() => { this.errorMessage = ''; }, 3000)
+
                 }
                 }
                 )

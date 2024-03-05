@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationService } from '../Services/navigationService.service';
+import { NavigationService } from '../Services/panelManager.service';
 import { Observable } from 'rxjs';
 
 @Component({

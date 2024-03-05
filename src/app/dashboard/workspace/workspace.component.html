@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="grid grid-cols-2 auto-rows-auto overflow-scroll gap-2 h-5/6">
-    <app-chart-tabs *ngFor="let chart of chartList" [chartData]="chart"></app-chart-tabs>
+    <app-chart-tabs *ngFor="let chart of ( chartList | async)" [chartData]="chart" class="p-2 bg-secondary-variant-bg h-fit"></app-chart-tabs>
   </div>
     <!-- <select name="upload-field-document-type" id="upload-field-type" class="custom-select w-12 p-0">
       <option value="file">File</option>

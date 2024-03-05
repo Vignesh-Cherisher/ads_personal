@@ -4,13 +4,33 @@
     <i class="fa-solid fa-caret-left" style="color: #32f0dc;"></i>
   </ng-template>
 </div>
-<div class="flex flex-col justify-between bg-primary-bg border-solid border-l-2 border-secondary-variant-bg pl-4 w-48 py-4 h-full" [ngClass]="{'hidden': isCollapsed}">
-  <div class="flex text-primary-text justify-start space-x-1 items-center cursor-pointer">
-    <i class="fa-solid fa-chevron-down fa-sm" style="color: #ffffff;"></i>
-    <p class="whitespace-nowrap">Chart options</p>
+<form #chartConfigForm = "ngForm" (ngSubmit)="submitChartConfig()" class="flex flex-col justify-between bg-primary-bg border-solid border-l-2 border-secondary-variant-bg pl-4 w-48 py-4 h-full" [ngClass]="{'hidden': isCollapsed}">
+  <div class="">
+    <div class="flex text-primary-text justify-start space-x-1 items-center cursor-pointer" (click)="triggerDropDown()">
+      <i class="fa-solid fa-chevron-right fa-sm" style="color: #ffffff;" *ngIf="!isDroppedDown else showOptions"></i>
+      <ng-template #showOptions>
+        <i class="fa-solid fa-chevron-down fa-sm" style="color: #ffffff;"></i>
+      </ng-template>
+      <p class="whitespace-nowrap">Chart options</p>
+    </div>
+    <div class="space-y-4 mt-4 px-8" *ngIf="isDroppedDown">
+
+        <select name="chartFile" id="chart-file-select" class="w-full p-1" required>
+          <option value="File" hidden selected>Select File</option>
+          <option value="Sample">Sample</option>
+        </select>
+        <select name="chartXaxis" id="chart-xaxis-select" class="w-full p-1" required ngModel>
+          <option value="x-axis" hidden selected>x-axis</option>
+          <option [value] = "i + ' ' + chartField" *ngFor="let chartField of chartFields; let i = index">{{ chartField }}</option>
+        </select>
+        <select name="chartYaxis" id="chart-yaxis-select" class="w-full p-1" required ngModel>
+          <option value="y-axis" hidden selected>y-axis</option>
+          <option [value] = "i + ' ' + chartField" *ngFor="let chartField of chartFields; let i = index">{{ chartField }}</option>
+        </select>
+    </div>
   </div>
   <div class="grid grid-cols-2 gap-2 pr-4">
-    <button class="border-solid border-secondary-variant-bg border-2 py-1 px-2 text-secondary-text rounded-md">Cancel</button>
-    <button class="py-1 px-2 text-primary-bg bg-primary-color rounded-md">Confirm</button>
+    <button class="border-solid border-secondary-variant-bg border-2 py-1 px-2 text-secondary-text rounded-md" (click)="collapseControlPanel">Cancel</button>
+    <button class="py-1 px-2 text-primary-bg bg-primary-color rounded-md" type="submit">Confirm</button>
   </div>
-</div>
+</form>
