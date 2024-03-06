@@ -11,7 +11,7 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     login(username: string, password: string): Observable<any> {
-        return this.http.post('https://192.168.0.220:7149/api/login',
+        return this.http.post('https://192.168.0.217:7149/api/login',
             {
                 userName: username,
                 password: password
@@ -28,7 +28,7 @@ export class AuthService {
     }
 
     register(username: string,email:string ,password: string): Observable<any> {
-        return this.http.post('https://192.168.0.217:3000/api/register',
+        return this.http.post('https://192.168.0.217:7149/api/register',
             {
                 userName:username,
                 email:email,
