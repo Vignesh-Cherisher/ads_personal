@@ -1,0 +1,40 @@
+<div class="flex bg-primary-bg w-full h-full">
+  <div class="flex w-8/12 mx-auto h-full p-8 ">
+    <div class="border-solid border-secondary-variant-bg border-2 rounded-s-xl pl-6 py-6 border-r-0">
+      <div class="mb-6">
+        <div class="flex items-center space-x-2 cursor-pointer hover:brightness-75 mb-2" (click)="triggerPluginDropDown()">
+          <i class="fa-solid fa-chevron-down" style="color: #c6c8c7;" *ngIf="!isPluginOptionsDroppedDown else showPluginOptions"></i>
+          <ng-template #showPluginOptions>
+            <i class="fa-solid fa-chevron-down fa-sm" style="color: #ffffff;"></i>
+          </ng-template>
+          <p class="text-primary-color">Plugin Options</p>
+        </div>
+        <!-- Plugin options -->
+        <div *ngIf="isPluginOptionsDroppedDown">
+          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Upload New Plugin</p>
+          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Available Plugins</p>
+        </div>
+      </div>
+
+      <!-- File options menu-->
+      <div class="mb-6">
+        <div class="flex items-center space-x-2 cursor-pointer hover:brightness-75 mb-2" (click)="triggerFileDropDown()">
+          <i class="fa-solid fa-chevron-down" style="color: #c6c8c7;" *ngIf="!isFileOptionsDroppedDown else showFileOptions"></i>
+          <ng-template #showFileOptions>
+            <i class="fa-solid fa-chevron-down fa-sm" style="color: #ffffff;"></i>
+          </ng-template>
+          <p class="text-primary-color">File Options</p>
+        </div>
+        <!-- File options -->
+        <div *ngIf="isFileOptionsDroppedDown">
+          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Upload New File</p>
+          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">File History</p>
+          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Saved Sessions</p>
+        </div>
+      </div>
+    </div>
+    <app-available-plugins class="w-8/12">
+      <button class="bg-primary-color rounded-md px-4 py-2 font-semibold absolute right-3 bottom-3 hover:brightness-90" routerLink="/dashboard" >Continue</button>
+    </app-available-plugins>
+  </div>
+</div>

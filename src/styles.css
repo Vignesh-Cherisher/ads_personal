@@ -18,9 +18,5 @@ body, html {
 }
 
 @layer base {
-  select {
-    @apply appearance-none w-fit text-xs px-2 bg-transparent
-          text-primary-text cursor-pointer border-solid
-          outline-none focus:outline-none
-  }
+  
 }

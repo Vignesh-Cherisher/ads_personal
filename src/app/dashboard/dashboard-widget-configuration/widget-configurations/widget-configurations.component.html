@@ -1,0 +1,12 @@
+<select name="chartFile" id="chart-file-select" class="w-full p-1" required>
+  <option value="File" hidden selected>Select File</option>
+  <option value="Sample">Sample</option>
+</select>
+<select name="chartXaxis" id="chart-xaxis-select" class="w-full p-1" required ngModel>
+  <option value="x-axis" hidden selected>x-axis</option>
+  <option [value] = "i + ' ' + chartField" *ngFor="let chartField of chartFields; let i = index">{{ chartField }}</option>
+</select>
+<select name="chartYaxis" id="chart-yaxis-select" class="w-full p-1" required ngModel>
+  <option value="y-axis" hidden selected>y-axis</option>
+  <option [value] = "i + ' ' + chartField" *ngFor="let chartField of chartFields; let i = index">{{ chartField }}</option>
+</select>
