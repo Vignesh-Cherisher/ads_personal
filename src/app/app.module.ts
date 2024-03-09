@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetConfigurationsComponent } from './dashboard/dashboard-widget-configuration/widget-configurations/widget-configurations.component';
 import { DashboardCanvasComponent } from './dashboard/dashboard-canvas/dashboard-canvas.component';
 import { DashboardWidgetsComponent } from './dashboard/dashboard-canvas/dashboard-widgets/dashboard-widgets.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DashboardWidgetsComponent } from './dashboard/dashboard-canvas/dashboar
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ChartService],
   bootstrap: [AppComponent]

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UploadFileComponent {
   myForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private http:HttpClient) { }
 
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
@@ -28,7 +29,20 @@ export class UploadFileComponent {
   }
 
   onSubmit(): void {
-    // Handle form submission
-    console.log(this.myForm.value);
+    const formData = new FormData();
+    formData.append('file', this.myForm.get('file').value);
+    console.log(this.myForm.get('file'))
+    console.log(formData)
+    this.http.post('https://192.168.0.217:7149/api/data/upload', 
+    {formData}).subscribe(
+     {
+      next: (response) => {
+        console.log('File uploaded successfully!', response);
+      },
+      error: error => {
+        console.error('Error uploading file:', error);
+      }
+     }
+    );
   }
 }
