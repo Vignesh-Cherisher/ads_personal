@@ -13,7 +13,7 @@ import { FileHistoryComponent } from './header/file-history/file-history.compone
 import { DashboardWidgetPickerComponent } from './dashboard/dashboard-widget-picker/dashboard-widget-picker.component';
 import { DashboardWidgetConfigurationComponent } from './dashboard/dashboard-widget-configuration/dashboard-widget-configuration.component';
 import { ChartService } from './Services/Chart.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetConfigurationsComponent } from './dashboard/dashboard-widget-configuration/widget-configurations/widget-configurations.component';
 import { DashboardCanvasComponent } from './dashboard/dashboard-canvas/dashboard-canvas.component';
 import { DashboardWidgetsComponent } from './dashboard/dashboard-canvas/dashboard-widgets/dashboard-widgets.component';
@@ -38,6 +38,7 @@ import { DashboardWidgetsComponent } from './dashboard/dashboard-canvas/dashboar
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [ChartService],
