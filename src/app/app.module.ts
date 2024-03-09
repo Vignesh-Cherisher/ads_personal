@@ -10,7 +10,6 @@ import { UploadPluginsComponent } from './plugin-and-file-manager/upload-plugins
 import { AvailablePluginsComponent } from './plugin-and-file-manager/available-plugins/available-plugins.component';
 import { UploadFileComponent } from './plugin-and-file-manager/upload-file/upload-file.component';
 import { FileHistoryComponent } from './header/file-history/file-history.component';
-import { SavedFilesComponent } from './plugin-and-file-manager/saved-files/saved-files.component';
 import { DashboardWidgetPickerComponent } from './dashboard/dashboard-widget-picker/dashboard-widget-picker.component';
 import { DashboardWidgetConfigurationComponent } from './dashboard/dashboard-widget-configuration/dashboard-widget-configuration.component';
 import { ChartService } from './Services/Chart.service';
@@ -28,7 +27,6 @@ import { DashboardWidgetsComponent } from './dashboard/dashboard-canvas/dashboar
     DashboardComponent,
     UploadPluginsComponent,
     UploadFileComponent,
-    SavedFilesComponent,
     FileHistoryComponent,
     PluginAndFileManagerComponent,
     DashboardWidgetPickerComponent,
