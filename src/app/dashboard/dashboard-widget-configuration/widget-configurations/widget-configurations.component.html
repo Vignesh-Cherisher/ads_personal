@@ -1,12 +1,15 @@
-<select name="chartFile" id="chart-file-select" class="w-full p-1" required>
-  <option value="File" hidden selected>Select File</option>
-  <option value="Sample">Sample</option>
-</select>
-<select name="chartXaxis" id="chart-xaxis-select" class="w-full p-1" required ngModel>
-  <option value="x-axis" hidden selected>x-axis</option>
-  <option [value] = "i + ' ' + chartField" *ngFor="let chartField of chartFields; let i = index">{{ chartField }}</option>
-</select>
-<select name="chartYaxis" id="chart-yaxis-select" class="w-full p-1" required ngModel>
-  <option value="y-axis" hidden selected>y-axis</option>
-  <option [value] = "i + ' ' + chartField" *ngFor="let chartField of chartFields; let i = index">{{ chartField }}</option>
-</select>
+<div class="flex flex-col my-4" *ngFor="let widgetField of widgetFields">
+  <label [for]="widgetField.fieldLabel" class="text-primary-text font-semibold">{{ widgetField.fieldLabel + ':' }}</label>
+  @switch (widgetField.fieldType) {
+    @case ('text') {
+      <input type="text" class="w-full h-10" [id]="widgetField.fieldLabel">
+    } @case('select') {
+      <select [name]="widgetField.fieldLabel + '-select'" [id]="widgetField.fieldLabel" class="w-full h-10">
+        <option value="" selected>Select an option</option>
+        <option [value]="selectOption" *ngFor="let selectOption of widgetField.options">{{ selectOption }}</option>
+      </select>
+    } @default {
+      <input type="text" class="w-full h-10" [id]="widgetField.fieldLabel">
+    }
+  }
+</div>

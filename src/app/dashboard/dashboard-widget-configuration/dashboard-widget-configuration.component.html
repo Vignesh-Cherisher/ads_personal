@@ -1,24 +1,46 @@
-<div class="border-solid border-2 border-secondary-variant-bg rounded-s-2xl py-5 px-1.5 cursor-pointer" (click)="collapseControlPanel()">
-  <i *ngIf="!isCollapsed else collapsed" class="fa-solid fa-caret-right" style="color: #32f0dc;"></i>
-  <ng-template #collapsed>
-    <i class="fa-solid fa-caret-left" style="color: #32f0dc;"></i>
-  </ng-template>
+<div class="flex items-center h-full absolute right-0 top-0">
+  <div class="border-solid border-2 border-secondary-bg bg-primary-bg rounded-s-2xl py-5 px-1.5 cursor-pointer" (click)="collapseControlPanel()">
+    <i *ngIf="!isCollapsed else collapsed" class="fa-solid fa-caret-right" style="color: #32f0dc;"></i>
+    <ng-template #collapsed>
+      <i class="fa-solid fa-caret-left" style="color: #32f0dc;"></i>
+    </ng-template>
+  </div>
+  <form #chartConfigForm = "ngForm" (ngSubmit)="submitChartConfig()" class="flex flex-col justify-between bg-primary-bg border-solid border-l-2 border-secondary-bg px-4 w-56 py-4 h-full" [ngClass]="{'hidden': isCollapsed}">
+    <div>
+      <div class="hover:border-b-[0.5px] border-solid border-[#dadada51] mb-2">
+        <div class="flex text-primary-text justify-start space-x-1 items-center cursor-pointer pb-2" (click)="triggerDropDown(0)">
+          <i class="fa-solid fa-chevron-right fa-sm" style="color: #ffffff;" *ngIf="!isDroppedDownArray[0] else showPlguinOptions"></i>
+          <ng-template #showPlguinOptions>
+            <i class="fa-solid fa-chevron-down fa-sm" style="color: #ffffff;"></i>
+          </ng-template>
+          <p class="whitespace-nowrap">Plugin Configurations</p>
+        </div>
+        <div class="space-y-4 my-4 px-4" *ngIf="isDroppedDownArray[0]">
+          <select name="plugin-select" ngModel id="plugin-select-field" class="p-2 w-full rounded-sm">
+            <option value="" selected disabled hidden>Select Plugin</option>
+            <option value="plugin" *ngFor="let plugin of pluginList">{{ plugin }}</option>
+          </select>
+          <app-plugin-configurations *ngFor="let pluginConfigField of pluginConfigFields" [pluginConfigType]="pluginConfigField" #childInput (elementChanged)="onElementChanged($event)"></app-plugin-configurations>
+        </div>
+      </div>
+
+      <div class="hover:border-b-[0.5px] border-solid border-[#dadada51]">
+        <div class="flex text-primary-text justify-start space-x-1 items-center cursor-pointer pb-2" (click)="triggerDropDown(1)">
+          <i class="fa-solid fa-chevron-right fa-sm" style="color: #ffffff;" *ngIf="!isDroppedDownArray[1] else showWidgetOptions"></i>
+          <ng-template #showWidgetOptions>
+            <i class="fa-solid fa-chevron-down fa-sm" style="color: #ffffff;"></i>
+          </ng-template>
+          <p class="whitespace-nowrap">Widget Configurations</p>
+        </div>
+        <div class="space-y-4 mt-4 px-4" *ngIf="isDroppedDownArray[1]">
+          <app-widget-configurations></app-widget-configurations>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2">
+      <button class="border-solid border-secondary-variant-bg border-2 py-1 px-2 text-secondary-text rounded-md hover:brightness-90" (click)="collapseControlPanel">Cancel</button>
+      <button class="py-1 px-2 text-primary-bg bg-primary-color rounded-md hover:brightness-90" type="submit">Confirm</button>
+    </div>
+  </form>
 </div>
-<form #chartConfigForm = "ngForm" (ngSubmit)="submitChartConfig()" class="flex flex-col justify-between bg-primary-bg border-solid border-l-2 border-secondary-variant-bg pl-4 w-48 py-4 h-full" [ngClass]="{'hidden': isCollapsed}">
-  <div class="">
-    <div class="flex text-primary-text justify-start space-x-1 items-center cursor-pointer" (click)="triggerDropDown()">
-      <i class="fa-solid fa-chevron-right fa-sm" style="color: #ffffff;" *ngIf="!isDroppedDown else showOptions"></i>
-      <ng-template #showOptions>
-        <i class="fa-solid fa-chevron-down fa-sm" style="color: #ffffff;"></i>
-      </ng-template>
-      <p class="whitespace-nowrap">Chart options</p>
-    </div>
-    <div class="space-y-4 mt-4 px-8" *ngIf="isDroppedDown">
-      
-    </div>
-  </div>
-  <div class="grid grid-cols-2 gap-2 pr-4">
-    <button class="border-solid border-secondary-variant-bg border-2 py-1 px-2 text-secondary-text rounded-md" (click)="collapseControlPanel">Cancel</button>
-    <button class="py-1 px-2 text-primary-bg bg-primary-color rounded-md" type="submit">Confirm</button>
-  </div>
-</form>

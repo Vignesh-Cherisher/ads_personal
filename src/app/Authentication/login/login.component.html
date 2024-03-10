@@ -1,0 +1,47 @@
+<div
+  class="view-container w-100 h-full flex justify-center items-center bg-primary-bg py-20 font-poppins text-primary-text"
+>
+  <div
+    class="login-container w-4/12 h-max border-2 border-primary-color rounded-md flex flex-col items-center p-4 space-y-4 bg-secondary-bg min-w-[475px]"
+  >
+    <div class="title text-primary-text text-2xl font-medium">ADS -Login</div>
+    <div class="form-field flex flex-col w-full py-4">
+      <label for="username" class="pb-2 text-lg font-medium text-primary-text">
+        Username
+      </label>
+      <input
+        type="text"
+        id="username"
+        placeholder="Enter your Username"
+        class="p-2 border-2 border-primary-color bg-transparent focus:outline-none focus:border-2 rounded-md"
+      />
+    </div>
+    <div class="py-4 flex flex-col w-full">
+      <label for="password" class="pb-2 text-lg font-medium"> Password </label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        class="p-2 border-2 border-primary-color bg-transparent focus:outline-none focus:border-2 rounded-md"
+      />
+    </div>
+    <div class="flex justify-between items-center w-full">
+      <div>
+        New User?
+        <span
+          class="text-primary-color underline p-1 cursor-pointer"
+
+        >
+          Register Here
+        </span>
+      </div>
+      <button
+        type="submit"
+        class="bg-primary-color w-max px-8 py-2 rounded-md text-primary-bg font-medium"
+        routerLink="/plugin-and-file-manager"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</div>

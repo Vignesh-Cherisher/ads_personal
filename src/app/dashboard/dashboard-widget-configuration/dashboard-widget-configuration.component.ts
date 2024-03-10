@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { ChartService } from '../../Services/Chart.service';
 import { FormGroup } from '@angular/forms';
+import { WidgetDataService } from '../../Services/widget-data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-widget-configuration',
@@ -9,27 +10,42 @@ import { FormGroup } from '@angular/forms';
 })
 export class DashboardWidgetConfigurationComponent {
   isCollapsed: boolean = false;
-  isDroppedDown: boolean = true;
-  chartFields: string[];
+  isDroppedDownArray: boolean[] = [true, true]
+  private lastActiveWidgetSubscription: Subscription = new Subscription();
+
+  pluginList: string[] = ['Excel']
+  pluginConfigFields: object[] = [{ fieldLabel: 'File', fieldType: 'select' }, { fieldLabel: 'File Name', fieldType: 'text' }];
+
+  pluginConfigForm: object[]
+
   @ViewChild('chartConfigForm') chartConfigForm: FormGroup;
 
-  constructor(private chartService: ChartService) { }
+  constructor(public widgetDataService: WidgetDataService) { }
 
   ngOnInit(): void {
-    this.chartFields = this.chartService.getChartFields()
+    this.lastActiveWidgetSubscription.add(this.widgetDataService.activeWidgetChanged$.subscribe(widget => {
+      console.log(widget);
+    }))
   }
 
   collapseControlPanel() {
     this.isCollapsed = !this.isCollapsed;
   }
 
-  triggerDropDown() {
-    this.isDroppedDown = !this.isDroppedDown;
+  triggerDropDown(configIndex: number) {
+    this.isDroppedDownArray[configIndex] = !this.isDroppedDownArray[configIndex]
   }
 
   submitChartConfig() {
+    const combinedFormData = {
+      ...this.chartConfigForm.value,
+      childInput:
+    }
     console.log(this.chartConfigForm.value);
-    this.chartService.configureChart(this.chartConfigForm.value)
     this.chartConfigForm.reset()
+  }
+
+  onElementChanged(event: any) {
+    this.pluginConfigForm.
   }
 }

@@ -1,0 +1,20 @@
+<div class="flex flex-col my-4">
+  <label [for]="pluginConfigType.fieldLabel" class="text-primary-text font-semibold">{{ pluginConfigType.fieldLabel + ':' }}</label>
+  @switch (pluginConfigType.fieldType) {
+    @case ('file') {
+      <input type="file" class="text-white text-wrap"  (change)="onElementChange(pluginConfigType, $event.target.value)" [id]="pluginConfigType.fieldLabel">
+    } @case ('text') {
+      <input type="text" class="w-full h-10"  (change)="onElementChange(pluginConfigType, $event.target.value)" [id]="pluginConfigType.fieldLabel">
+    } @case('number') {
+      <input type="number" class="w-full h-10"  (change)="onElementChange(pluginConfigType, $event.target.value)" [id]="pluginConfigType.fieldLabel">
+    } @case('select') {
+      <select [name]="pluginConfigType.fieldLabel + '-select'"  (change)="onElementChange(pluginConfigType, $event.target.value)" [id]="pluginConfigType.fieldLabel" class="w-full h-10">
+        <option value="0" selected>Select an option</option>
+        <option value="1" selected>Select</option>
+        <option [value]="selectOption" *ngFor="let selectOption of pluginConfigType.options">{{ selectOption }}</option>
+      </select>
+    } @default {
+      <input type="text" class="w-full h-10" [id]="pluginConfigType.fieldLabel">
+    }
+  }
+</div>
