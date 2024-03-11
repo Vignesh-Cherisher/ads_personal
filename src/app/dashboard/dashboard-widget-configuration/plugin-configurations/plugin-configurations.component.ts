@@ -7,14 +7,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PluginConfigurationsComponent implements OnInit {
   @Input() pluginConfigType: any;
-  @Output() elementChanged: EventEmitter<any> = new EventEmitter<any>();
+  @Output() pluginConfigChanged: EventEmitter<any> = new EventEmitter<any>();
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
   }
 
-  onElementChange(element: any, newValue: string) {
-    this.elementChanged.emit({ element, newValue });
+  onPluginConfigChange(element: string, newValue: string) {
+    this.pluginConfigChanged.emit({ fieldLabel: element, value: newValue });
   }
 }

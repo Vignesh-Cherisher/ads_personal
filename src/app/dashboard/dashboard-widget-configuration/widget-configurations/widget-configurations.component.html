@@ -1,15 +1,15 @@
-<div class="flex flex-col my-4" *ngFor="let widgetField of widgetFields">
+<div class="flex flex-col mb-4" *ngFor="let widgetField of widgetFields">
   <label [for]="widgetField.fieldLabel" class="text-primary-text font-semibold">{{ widgetField.fieldLabel + ':' }}</label>
   @switch (widgetField.fieldType) {
     @case ('text') {
-      <input type="text" class="w-full h-10" [id]="widgetField.fieldLabel">
+      <input type="text" class="w-full h-10" (change)="onWidgetConfigChange(widgetField.fieldLabel, $event.target.value)" [id]="widgetField.fieldLabel">
     } @case('select') {
-      <select [name]="widgetField.fieldLabel + '-select'" [id]="widgetField.fieldLabel" class="w-full h-10">
+      <select [name]="widgetField.fieldLabel + '-select'" (change)="onWidgetConfigChange(widgetField.fieldLabel, $event.target.value)" [id]="widgetField.fieldLabel" class="w-full h-10">
         <option value="" selected>Select an option</option>
         <option [value]="selectOption" *ngFor="let selectOption of widgetField.options">{{ selectOption }}</option>
       </select>
     } @default {
-      <input type="text" class="w-full h-10" [id]="widgetField.fieldLabel">
+      <input type="text" class="w-full h-10" [id]="widgetField.fieldLabel" (change)="onWidgetConfigChange(widgetField.fieldLabel, $event.target.value)">
     }
   }
 </div>

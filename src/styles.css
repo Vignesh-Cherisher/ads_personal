@@ -17,6 +17,11 @@ body, html {
   width: 100%;
 }
 
+::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
 @layer base {
-  
+
 }

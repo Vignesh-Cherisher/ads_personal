@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { WidgetDataService } from '../../Services/widget-data.service';
 import { Subscription } from 'rxjs';
+import { widgetData } from '../../Models/widgetData.model';
 
 @Component({
   selector: 'app-dashboard-widget-configuration',
@@ -11,12 +12,12 @@ import { Subscription } from 'rxjs';
 export class DashboardWidgetConfigurationComponent {
   isCollapsed: boolean = false;
   isDroppedDownArray: boolean[] = [true, true]
+  // isAllFieldInputsReceived: boolean = false
   private lastActiveWidgetSubscription: Subscription = new Subscription();
-
+  lastActiveWidget: widgetData
   pluginList: string[] = ['Excel']
-  pluginConfigFields: object[] = [{ fieldLabel: 'File', fieldType: 'select' }, { fieldLabel: 'File Name', fieldType: 'text' }];
-
-  pluginConfigForm: object[]
+  pluginConfigFields: any[] = [{ fieldLabel: 'File', fieldType: 'select', options: [] }, { fieldLabel: 'File Name', fieldType: 'text' }];
+  widgetConfigFields: any [] = []
 
   @ViewChild('chartConfigForm') chartConfigForm: FormGroup;
 
@@ -24,8 +25,9 @@ export class DashboardWidgetConfigurationComponent {
 
   ngOnInit(): void {
     this.lastActiveWidgetSubscription.add(this.widgetDataService.activeWidgetChanged$.subscribe(widget => {
-      console.log(widget);
+      this.lastActiveWidget = widget
     }))
+    this.pluginConfigFields[0].options = this.widgetDataService.getFileList()
   }
 
   collapseControlPanel() {
@@ -37,15 +39,31 @@ export class DashboardWidgetConfigurationComponent {
   }
 
   submitChartConfig() {
-    const combinedFormData = {
+    const combinedFormData:any = {
       ...this.chartConfigForm.value,
-      childInput:
+      pluginConfiguration: this.pluginConfigFields,
+      widgetConfiguration: this.widgetConfigFields
     }
-    console.log(this.chartConfigForm.value);
+    this.widgetDataService.setFormValues(combinedFormData, this.lastActiveWidget)
     this.chartConfigForm.reset()
   }
 
-  onElementChanged(event: any) {
-    this.pluginConfigForm.
+  onPluginConfigChanged(event: any) {
+    let isAllPluginFieldsReceived: boolean = true
+    for(let formField of this.pluginConfigFields) {
+      if(formField.fieldLabel === event.fieldLabel) {
+        formField.fieldValue = event.value
+      }
+      if(formField.fieldValue === undefined) {
+        isAllPluginFieldsReceived = false
+      }
+    }
+    if(isAllPluginFieldsReceived) {
+      this.widgetDataService.setFileFieldValues(this.pluginConfigFields[0].options[0])
+    }
+  }
+
+  onWidgetConfigChanged(event: any) {
+    this.widgetConfigFields = event
   }
 }

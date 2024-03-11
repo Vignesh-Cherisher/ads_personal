@@ -6,34 +6,34 @@
     </ng-template>
   </div>
   <form #chartConfigForm = "ngForm" (ngSubmit)="submitChartConfig()" class="flex flex-col justify-between bg-primary-bg border-solid border-l-2 border-secondary-bg px-4 w-56 py-4 h-full" [ngClass]="{'hidden': isCollapsed}">
-    <div>
-      <div class="hover:border-b-[0.5px] border-solid border-[#dadada51] mb-2">
-        <div class="flex text-primary-text justify-start space-x-1 items-center cursor-pointer pb-2" (click)="triggerDropDown(0)">
+    <div class="h-5/6">
+      <div class="hover:border-b-[0.5px] border-solid border-[#dadada51] mb-2 max-h-[50%] overflow-y-scroll relative">
+        <div class="flex text-primary-text justify-start space-x-1 items-center cursor-pointer pb-2 sticky top-0 bg-primary-bg" (click)="triggerDropDown(0)">
           <i class="fa-solid fa-chevron-right fa-sm" style="color: #ffffff;" *ngIf="!isDroppedDownArray[0] else showPlguinOptions"></i>
           <ng-template #showPlguinOptions>
             <i class="fa-solid fa-chevron-down fa-sm" style="color: #ffffff;"></i>
           </ng-template>
           <p class="whitespace-nowrap">Plugin Configurations</p>
         </div>
-        <div class="space-y-4 my-4 px-4" *ngIf="isDroppedDownArray[0]">
-          <select name="plugin-select" ngModel id="plugin-select-field" class="p-2 w-full rounded-sm">
+        <div class="space-y-4 px-4" [ngClass]="{ 'hidden' : !isDroppedDownArray[0] }">
+          <select name="plugin-select" ngModel id="plugin-select-field" class="p-2 w-full rounded-sm mb-4">
             <option value="" selected disabled hidden>Select Plugin</option>
             <option value="plugin" *ngFor="let plugin of pluginList">{{ plugin }}</option>
           </select>
-          <app-plugin-configurations *ngFor="let pluginConfigField of pluginConfigFields" [pluginConfigType]="pluginConfigField" #childInput (elementChanged)="onElementChanged($event)"></app-plugin-configurations>
+          <app-plugin-configurations *ngFor="let pluginConfigField of pluginConfigFields" [pluginConfigType]="pluginConfigField" #childInput (pluginConfigChanged)="onPluginConfigChanged($event)"></app-plugin-configurations>
         </div>
       </div>
 
-      <div class="hover:border-b-[0.5px] border-solid border-[#dadada51]">
-        <div class="flex text-primary-text justify-start space-x-1 items-center cursor-pointer pb-2" (click)="triggerDropDown(1)">
+      <div class="hover:border-b-[0.5px] border-solid border-[#dadada51] max-h-[50%] overflow-y-scroll relative">
+        <div class="flex text-primary-text justify-start space-x-1 items-center cursor-pointer pb-2 sticky top-0 bg-primary-bg" (click)="triggerDropDown(1)">
           <i class="fa-solid fa-chevron-right fa-sm" style="color: #ffffff;" *ngIf="!isDroppedDownArray[1] else showWidgetOptions"></i>
           <ng-template #showWidgetOptions>
             <i class="fa-solid fa-chevron-down fa-sm" style="color: #ffffff;"></i>
           </ng-template>
           <p class="whitespace-nowrap">Widget Configurations</p>
         </div>
-        <div class="space-y-4 mt-4 px-4" *ngIf="isDroppedDownArray[1]">
-          <app-widget-configurations></app-widget-configurations>
+        <div class="space-y-4 px-4" [ngClass]="{ 'hidden' : !isDroppedDownArray[1] }">
+          <app-widget-configurations #widgetConfig (widgetConfigChanged)="onWidgetConfigChanged($event)"></app-widget-configurations>
         </div>
       </div>
     </div>
