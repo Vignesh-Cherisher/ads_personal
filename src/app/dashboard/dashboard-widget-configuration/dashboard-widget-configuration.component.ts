@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { WidgetDataService } from '../../Services/widget-data.service';
 import { Subscription } from 'rxjs';
 import { widgetData } from '../../Models/widgetData.model';
+import { PluginService } from '../../Services/plugin.servive';
 
 @Component({
   selector: 'app-dashboard-widget-configuration',
@@ -15,18 +16,24 @@ export class DashboardWidgetConfigurationComponent {
   // isAllFieldInputsReceived: boolean = false
   private lastActiveWidgetSubscription: Subscription = new Subscription();
   lastActiveWidget: widgetData
-  pluginList: string[] = ['Excel']
+  pluginList: any
   pluginConfigFields: any[] = [{ fieldLabel: 'File', fieldType: 'select', options: [] }, { fieldLabel: 'File Name', fieldType: 'text' }];
   widgetConfigFields: any [] = []
 
   @ViewChild('chartConfigForm') chartConfigForm: FormGroup;
 
-  constructor(public widgetDataService: WidgetDataService) { }
+  constructor(public widgetDataService: WidgetDataService, private _pluginService: PluginService) { }
 
   ngOnInit(): void {
     this.lastActiveWidgetSubscription.add(this.widgetDataService.activeWidgetChanged$.subscribe(widget => {
       this.lastActiveWidget = widget
     }))
+    this._pluginService.getAvailablePlugins().subscribe((data: any) => {
+      this.pluginList = Object.keys(data.descriptions).map((key) => ({
+        name: key
+      }));
+      console.log(this.pluginList)
+    });
     this.pluginConfigFields[0].options = this.widgetDataService.getFileList()
   }
 

@@ -11,8 +11,8 @@
         </div>
         <!-- Plugin options -->
         <div *ngIf="isPluginOptionsDroppedDown">
-          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Upload New Plugin</p>
-          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Available Plugins</p>
+          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75" routerLink="upload-plugin">Upload New Plugin</p>
+          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75" routerLink="./">Available Plugins</p>
         </div>
       </div>
 
@@ -27,12 +27,14 @@
         </div>
         <!-- File options -->
         <div *ngIf="isFileOptionsDroppedDown">
-          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75">Upload New File</p>
+          <p class="px-8 text-primary-text cursor-pointer hover:brightness-75" routerLink="upload-file">Upload New File</p>
         </div>
       </div>
     </div>
-    <div class="border-solid border-l-0 border-2 border-secondary-variant-bg  bg-secondary-bg pl-2 pr-10 rounded-e-xl py-4 relative text-sm h-full w-8/12 min-w-64">
-      <button class="bg-primary-color rounded-md px-4 py-2 font-semibold absolute right-3 bottom-3 hover:brightness-90" routerLink="/dashboard" >Continue</button>
+
+    <div class="w-8/12">
+      <router-outlet>
+      </router-outlet>
     </div>
   </div>
 </div>

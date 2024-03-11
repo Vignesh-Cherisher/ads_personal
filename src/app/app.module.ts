@@ -16,7 +16,13 @@ import { WidgetDataService } from './Services/widget-data.service';
 import { PluginConfigurationsComponent } from './dashboard/dashboard-widget-configuration/plugin-configurations/plugin-configurations.component';
 import { WidgetConfigurationsComponent } from './dashboard/dashboard-widget-configuration/widget-configurations/widget-configurations.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AvailablePluginsComponent } from './plugin-and-file-manager/available-plugins/available-plugins.component';
+import { UploadFileComponent } from './plugin-and-file-manager/upload-file/upload-file.component';
+import { UploadPluginsComponent } from './plugin-and-file-manager/upload-plugins/upload-plugins.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FileService } from './Services/file.service';
+import { PluginService } from './Services/plugin.servive';
 
 @NgModule({
   declarations: [
@@ -25,6 +31,9 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     DashboardComponent,
     PluginAndFileManagerComponent,
+    AvailablePluginsComponent,
+    UploadFileComponent,
+    UploadPluginsComponent,
     DashboardWidgetPickerComponent,
     DashboardCanvasComponent,
     DashboardWidgetsComponent,
@@ -36,9 +45,11 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [WidgetDataService],
+  providers: [WidgetDataService,PluginService,FileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
