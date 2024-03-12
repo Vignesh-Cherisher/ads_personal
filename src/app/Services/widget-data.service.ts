@@ -42,8 +42,10 @@ export class WidgetDataService {
   }
 
   removeWidgetFromStore(value: widgetData) {
+    console.log(value, this.widgetDataStore);
     this.widgetDataStore.splice(this.widgetDataStore.indexOf(value), 1)
     this.widgetIdArray.splice(this.widgetIdArray.indexOf(value.widgetId), 1)
+    console.log( this.widgetDataStore);
   }
 
   setLastActiveWidget(value: widgetData) {

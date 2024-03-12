@@ -17,11 +17,11 @@ export class BarAndLineChartWidgetComponent implements AfterViewInit{
   constructor(private _widgetService: WidgetDataService) { }
 
   ngAfterViewInit(): void {
-    this.createChartInstance(this.widgetRef.nativeElement.id,[])
+    this.createChartInstance(this.widgetRef.nativeElement.id, [])
     this.activeWidgetSubscription.add(this._widgetService.activeWidgetChanged$.subscribe(
       (widget) => {
-        console.log(widget);
         if(widget.widgetId === this.widgetRef.nativeElement.id && widget.widgetType === this.widgetObject.widgetType) {
+          console.log(widget.widgetId, this.widgetRef.nativeElement.id);
           this.plotBarChart(widget)
         }
       }
@@ -31,17 +31,20 @@ export class BarAndLineChartWidgetComponent implements AfterViewInit{
   plotBarChart(widget: widgetData) {
     let formData = (widget.widgetConfigurationOptions)['widgetConfiguration']
     let pluginConfig = (widget.widgetConfigurationOptions)['pluginConfiguration']
-    let traceValue = {
-      widgetXaxis:this._widgetService.getFileFieldValues(
-                  this._widgetService.getFieldIndex
-                    (this.getValueFromFormData('X-Axis', formData) ,
-                    this.getValueFromFormData('File', pluginConfig)),
-                    this.getValueFromFormData('File', pluginConfig)),
-      widgetYaxis: this._widgetService.getFileFieldValues(
-                      this._widgetService.getFieldIndex
-                      (this.getValueFromFormData('Y-Axis', formData) ,
+    let traceValue
+    if(formData !== undefined) {
+      traceValue = {
+        widgetXaxis:this._widgetService.getFileFieldValues(
+                    this._widgetService.getFieldIndex
+                      (this.getValueFromFormData('X-Axis', formData) ,
                       this.getValueFromFormData('File', pluginConfig)),
                       this.getValueFromFormData('File', pluginConfig)),
+        widgetYaxis: this._widgetService.getFileFieldValues(
+                        this._widgetService.getFieldIndex
+                        (this.getValueFromFormData('Y-Axis', formData) ,
+                        this.getValueFromFormData('File', pluginConfig)),
+                        this.getValueFromFormData('File', pluginConfig)),
+      }
     }
     let instanceTitle = this.getValueFromFormData('Title', formData)
     let instanceOptions;
@@ -54,9 +57,11 @@ export class BarAndLineChartWidgetComponent implements AfterViewInit{
   }
 
   getValueFromFormData(targetLabel: string, formData: any[]): string {
-    for(let i =0; i < formData.length; i++) {
-      if(formData[i].fieldLabel === targetLabel) {
-        return formData[i].fieldValue
+    if(formData !== undefined){
+      for(let i =0; i < formData.length; i++) {
+        if(formData[i].fieldLabel === targetLabel) {
+          return formData[i].fieldValue
+        }
       }
     }
     return undefined
