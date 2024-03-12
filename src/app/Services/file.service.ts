@@ -7,20 +7,27 @@ import { Observable} from "rxjs";
 })
 
 export class FileService{
-    private fileData: { datasetId: string, pluginName: string, fileName: string }[] = [];
-  
+    private fileNames: { datasetId: string, pluginName: string, fileName: string }[] = [];
+
     constructor(private http:HttpClient){}
 
-    addFileData(data: { datasetId: string, pluginName: string, fileName: string }) {
-      this.fileData.push(data);
-      console.log(this.fileData)
+    addFileNames(data: { datasetId: string, pluginName: string, fileName: string }) {
+      localStorage.setItem('fileNames', JSON.stringify(data))
+      // this.fileNames.push(data);
+      // console.log(this.fileNames)
     }
 
-    getFileData(): { datasetId: string, pluginName: string, fileName: string }[] {
-        return this.fileData;
+    getFileNames(): { datasetId: string, pluginName: string, fileName: string }[] {
+      this.fileNames.push(JSON.parse(localStorage.getItem('fileNames')));
+      console.log(this.fileNames);
+      return this.fileNames;
+    }
+
+    getFileData(pluginName:string, datasetId: string): Observable<{ fileData: any }> {
+      return this.http.get<{ fileData: any }>(`https://192.168.0.217:7149/api/Data/${pluginName}/${datasetId}`)
     }
 
     uploadFile(pluginName:string,formData:FormData):Observable<{datasetId:string,pluginName: string,fileName: string}>{
-        return this.http.post<{datasetId:string,pluginName: string,fileName: string}>(`https://192.168.0.217:7149/api/data/${pluginName}/uploadFile`,formData)
+      return this.http.post<{datasetId:string,pluginName: string,fileName: string}>(`https://192.168.0.217:7149/api/data/${pluginName}/uploadFile`,formData)
     }
 }

@@ -2,7 +2,7 @@ import { widgetData } from "../Models/widgetData.model";
 import { Observable, Subject } from 'rxjs';
 
 import { Injectable } from '@angular/core';
-import { FileService } from "./file.service";
+import { FileService } from './file.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +16,9 @@ export class WidgetDataService {
   fileFieldOptions = new Subject<string[]>();
   fieldOptionsChanged$ = this.fileFieldOptions.asObservable();
   fileList: any;
+  currentFileData: any;
 
-  constructor(private _fileService: FileService){
-    // this.populateFileList()
-   }
+  constructor(private _fileService: FileService){ }
 
   addToWidgetDataStore(value: widgetData) {
     if (value.widgetId === '') {
@@ -66,10 +65,21 @@ export class WidgetDataService {
     return [...Object.keys(this.fileList)]
   }
 
+  getFileDataFromService(selectedPlugin: string): any[] {
+    this.fileList = this._fileService.getFileNames()
+      .filter(file => file.pluginName === selectedPlugin)
+
+    return (this.fileList.map(file => file.fileName))
+  }
+
   setFileFieldValues(fileName: string) {
     for(let file of Object.keys(this.fileList)) {
-      if(fileName === file) {
-        this.fileFieldOptions.next(this.fileList[file].fields)
+      if(fileName === this.fileList[file].fileName) {
+        this._fileService.getFileData(this.fileList[file].pluginName, this.fileList[file].datasetId).subscribe(
+          data => {
+            this.currentFileData = data
+            this.fileFieldOptions.next(this.currentFileData.fields)
+          })
         break
       }
     }
@@ -82,18 +92,14 @@ export class WidgetDataService {
   }
 
   getFieldIndex(fieldName: string, fileName:string): number {
-    for(let field = 0; field < this.fileList[fileName].fields.length; field++) {
-      if(fieldName === this.fileList[fileName].fields[field]) {
+    for(let field = 0; field < this.currentFileData.fields.length; field++) {
+      if(fieldName === this.currentFileData.fields[field]) {
         return field
       }
     }
   }
 
   getFileFieldValues(fieldIndex:number, fileName:string): string[] {
-    return this.fileList[fileName].fieldValues[fieldIndex]
-  }
-
-  populateFileList() {
-    this.fileList = this._fileService.getFileData()
+    return this.currentFileData.fieldValues[fieldIndex]
   }
 }

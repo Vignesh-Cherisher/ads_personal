@@ -14,6 +14,7 @@ export class WidgetConfigurationsComponent implements OnInit {
   lastActiveWidget: Observable<widgetData>
   @Output() widgetConfigChanged: EventEmitter<any> = new EventEmitter<any>();
   fieldOptionSubscription: Subscription = new Subscription();
+  widgetType:string;
   fileFieldOptions: string[] = [];
 
   barChartConfigFields: object[] = [
@@ -30,9 +31,16 @@ export class WidgetConfigurationsComponent implements OnInit {
     { fieldLabel: 'Mode', fieldType: 'select', options: ['lines', 'markers', 'lines+markers'] },
   ]
 
+  tableViewConfigFields: object[] = [
+    {
+      
+    }
+  ]
+
   constructor(public widgetDataService: WidgetDataService) { }
 
   ngOnInit(): void {
+    console.log(this.fileFieldOptions);
     this.lastActiveWidgetSubscription.add(this.widgetDataService.activeWidgetChanged$.subscribe(widget => {
       // if (widget.widgetConfigurationOptions.length === 0) {
       this.getWidgetConfigurations(widget)
@@ -42,33 +50,40 @@ export class WidgetConfigurationsComponent implements OnInit {
     }))
     this.fieldOptionSubscription.add
       (this.widgetDataService.fieldOptionsChanged$.subscribe(
-        fileFields => {
-          this.barChartConfigFields = [
+      fileFields => {
+        this.fileFieldOptions = fileFields
+        if(this.widgetType === 'bar') {
+          this.widgetFields = [
             { fieldLabel: 'X-Axis', fieldType: 'select' , options: fileFields},
             { fieldLabel: 'Y-Axis', fieldType: 'select', options: fileFields},
             { fieldLabel: 'Title', fieldType: 'text' },
             { fieldLabel: 'Orientation', fieldType: 'select', options: ['v', 'h'] },
           ];
-          this.lineScatterConfigFields = [
+        } else if(this.widgetType === 'scatter') {
+          this.widgetFields = [
             { fieldLabel: 'X-Axis', fieldType: 'select', options: fileFields },
             { fieldLabel: 'Y-Axis', fieldType: 'select', options: fileFields },
             { fieldLabel: 'Title', fieldType: 'text' },
             { fieldLabel: 'Mode', fieldType: 'select', options: ['lines', 'markers', 'lines+markers'] }
           ]
         }
-      ))
+      }
+    ))
   }
 
   getWidgetConfigurations(widget: widgetData) {
     switch (widget.widgetType) {
       case 'bar':
         this.widgetFields = this.barChartConfigFields
+        this.widgetType = 'bar';
         break
       case 'scatter':
         this.widgetFields = this.lineScatterConfigFields
+        this.widgetType = 'scatter';
         break
       default:
         this.widgetFields = this.barChartConfigFields
+        this.widgetType = 'bar';
     }
   }
 

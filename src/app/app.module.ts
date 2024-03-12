@@ -10,7 +10,6 @@ import { PluginAndFileManagerComponent } from './plugin-and-file-manager/plugin-
 import { DashboardWidgetPickerComponent } from './dashboard/dashboard-widget-picker/dashboard-widget-picker.component';
 import { DashboardWidgetConfigurationComponent } from './dashboard/dashboard-widget-configuration/dashboard-widget-configuration.component';
 import { DashboardCanvasComponent } from './dashboard/dashboard-canvas/dashboard-canvas.component';
-import { DashboardWidgetsComponent } from './dashboard/dashboard-canvas/dashboard-widgets/dashboard-widgets.component';
 import { BarAndLineChartWidgetComponent } from './dashboard/dashboard-canvas/bar-and-line-chart-widget/bar-and-line-chart-widget.component';
 import { WidgetDataService } from './Services/widget-data.service';
 import { PluginConfigurationsComponent } from './dashboard/dashboard-widget-configuration/plugin-configurations/plugin-configurations.component';
@@ -23,6 +22,7 @@ import { UploadPluginsComponent } from './plugin-and-file-manager/upload-plugins
 import { HttpClientModule } from '@angular/common/http';
 import { FileService } from './Services/file.service';
 import { PluginService } from './Services/plugin.servive';
+import { TableViewWidgetComponent } from './dashboard/dashboard-canvas/table-view-widget/table-view-widget.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +36,11 @@ import { PluginService } from './Services/plugin.servive';
     UploadPluginsComponent,
     DashboardWidgetPickerComponent,
     DashboardCanvasComponent,
-    DashboardWidgetsComponent,
     DashboardWidgetConfigurationComponent,
     BarAndLineChartWidgetComponent,
     PluginConfigurationsComponent,
-    WidgetConfigurationsComponent
+    WidgetConfigurationsComponent,
+    TableViewWidgetComponent
    ],
   imports: [
     BrowserModule,

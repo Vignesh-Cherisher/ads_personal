@@ -1,15 +1,15 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { widgetData } from '../../../Models/widgetData.model';
 import { WidgetDataService } from '../../../Services/widget-data.service';
-import { Subscription } from 'rxjs';
 declare let Plotly: any;
 
 @Component({
-  selector: 'app-bar-and-line-chart-widget',
-  templateUrl: './bar-and-line-chart-widget.component.html',
-  styleUrl: './bar-and-line-chart-widget.component.css'
+  selector: 'app-table-view-widget',
+  templateUrl: './table-view-widget.component.html',
+  styleUrl: './table-view-widget.component.css'
 })
-export class BarAndLineChartWidgetComponent implements AfterViewInit{
+export class TableViewWidgetComponent {
   @Input() widgetObject: widgetData
   @ViewChild('widgetRef') widgetRef: ElementRef;
   activeWidgetSubscription: Subscription = new Subscription()

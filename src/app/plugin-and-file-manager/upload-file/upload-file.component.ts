@@ -52,10 +52,10 @@ export class UploadFileComponent {
     this.pluginName = this.fileInputForm.get('selectedPlugin').value
     const formData = new FormData();
     formData.append('file',this.fileToUpload)
-    this.fileService.uploadFile(this.pluginName,formData).subscribe( 
+    this.fileService.uploadFile(this.pluginName,formData).subscribe(
      {
       next: (data) => {
-        this.fileService.addFileData(data);
+        this.fileService.addFileNames(data);
         this.successMessage = 'File uploaded successfully!'
         setTimeout(() => { this.successMessage = ''; }, 3000)
         this.loading = false

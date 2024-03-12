@@ -16,9 +16,9 @@
           <p class="whitespace-nowrap">Plugin Configurations</p>
         </div>
         <div class="space-y-4 px-4" [ngClass]="{ 'hidden' : !isDroppedDownArray[0] }">
-          <select name="plugin-select" ngModel id="plugin-select-field" class="p-2 w-full rounded-sm mb-4">
+          <select name="plugin-select" ngModel id="plugin-select-field" class="p-2 w-full rounded-sm mb-4" (change)="getPluginConfigFields($event)">
             <option value="" selected disabled hidden>Select Plugin</option>
-            <option value="plugin" *ngFor="let plugin of pluginList">{{ plugin.name }}</option>
+            <option [value]="plugin.name" *ngFor="let plugin of pluginList">{{ plugin.name }}</option>
           </select>
           <app-plugin-configurations *ngFor="let pluginConfigField of pluginConfigFields" [pluginConfigType]="pluginConfigField" #childInput (pluginConfigChanged)="onPluginConfigChanged($event)"></app-plugin-configurations>
         </div>

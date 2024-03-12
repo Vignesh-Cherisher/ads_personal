@@ -4,6 +4,7 @@ import { WidgetDataService } from '../../Services/widget-data.service';
 import { Subscription } from 'rxjs';
 import { widgetData } from '../../Models/widgetData.model';
 import { PluginService } from '../../Services/plugin.servive';
+import { FileService } from '../../Services/file.service';
 
 @Component({
   selector: 'app-dashboard-widget-configuration',
@@ -17,24 +18,24 @@ export class DashboardWidgetConfigurationComponent {
   private lastActiveWidgetSubscription: Subscription = new Subscription();
   lastActiveWidget: widgetData
   pluginList: any
-  pluginConfigFields: any[] = [{ fieldLabel: 'File', fieldType: 'select', options: [] }, { fieldLabel: 'File Name', fieldType: 'text' }];
+  pluginConfigFields: any[] = [];
   widgetConfigFields: any [] = []
 
   @ViewChild('chartConfigForm') chartConfigForm: FormGroup;
 
-  constructor(public widgetDataService: WidgetDataService, private _pluginService: PluginService) { }
+  constructor(public widgetDataService: WidgetDataService, private _pluginService: PluginService, private _fileService: FileService) { }
 
   ngOnInit(): void {
     this.lastActiveWidgetSubscription.add(this.widgetDataService.activeWidgetChanged$.subscribe(widget => {
       this.lastActiveWidget = widget
     }))
     this._pluginService.getAvailablePlugins().subscribe((data: any) => {
-      this.pluginList = Object.keys(data.descriptions).map((key) => ({
+      this.pluginList = Object.keys(data.plugIns).map((key) => ({
         name: key
       }));
       console.log(this.pluginList)
     });
-    this.pluginConfigFields[0].options = this.widgetDataService.getFileList()
+    // this.pluginConfigFields[0].options = this.widgetDataService.getFileList()
   }
 
   collapseControlPanel() {
@@ -52,7 +53,6 @@ export class DashboardWidgetConfigurationComponent {
       widgetConfiguration: this.widgetConfigFields
     }
     this.widgetDataService.setFormValues(combinedFormData, this.lastActiveWidget)
-    this.chartConfigForm.reset()
   }
 
   onPluginConfigChanged(event: any) {
@@ -65,6 +65,7 @@ export class DashboardWidgetConfigurationComponent {
         isAllPluginFieldsReceived = false
       }
     }
+    console.log(this.pluginConfigFields[0].options[0]);
     if(isAllPluginFieldsReceived) {
       this.widgetDataService.setFileFieldValues(this.pluginConfigFields[0].options[0])
     }
@@ -72,5 +73,20 @@ export class DashboardWidgetConfigurationComponent {
 
   onWidgetConfigChanged(event: any) {
     this.widgetConfigFields = event
+  }
+
+  getPluginConfigFields(event: any) {
+    this.pluginConfigFields = []
+    let selectedPlugin = event.target.value
+    for(let plugin of this.pluginList) {
+      if(plugin.name === selectedPlugin) {
+        this.pluginConfigFields.push({ fieldLabel: 'File', fieldType: 'select', options: [] })
+      }
+    }
+    if (this.pluginConfigFields.length > 0 && this.pluginConfigFields[0].fieldType === 'select') {
+      if(this.pluginConfigFields.length > 0 && this.pluginConfigFields[0].fieldType === 'select') {
+        this.pluginConfigFields[0].options = this.widgetDataService.getFileDataFromService(selectedPlugin);
+      }
+    }
   }
 }
