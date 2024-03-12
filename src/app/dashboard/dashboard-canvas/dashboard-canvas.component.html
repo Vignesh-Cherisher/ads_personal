@@ -9,9 +9,6 @@
     </div>
   </div>
   <div class="grid grid-cols-2 auto-rows-auto overflow-scroll gap-2 h-5/6">
-    <div *ngFor="let widget of ( widgetList )">
-      <app-bar-and-line-chart-widget *ngIf="widget.widgetType === 'bar' || 'scatter'"  [widgetObject]="widget" class="p-2 bg-secondary-variant-bg h-fit"></app-bar-and-line-chart-widget>
-      <app-table-view-widget *ngIf="widget.widgetType === 'table'"  [widgetObject]="widget" class="p-2 bg-secondary-variant-bg h-fit"></app-table-view-widget>
-    </div>
+    <app-bar-and-line-chart-widget *ngFor="let widget of ( widgetList )" [widgetObject]="widget" class="p-2 bg-secondary-variant-bg h-fit"></app-bar-and-line-chart-widget>
   </div>
 </div>

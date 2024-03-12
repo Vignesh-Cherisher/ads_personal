@@ -17,6 +17,7 @@ export class DashboardCanvasComponent implements OnInit{
   ngOnInit(): void {
     this.activeWidgetChanged.add(this.widgetDataService.activeWidgetChanged$.subscribe(() => {
       this.widgetList = this.widgetDataService.widgetDataStore
+      console.log(this.widgetList);
     }))
   }
 

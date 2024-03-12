@@ -22,7 +22,6 @@ import { UploadPluginsComponent } from './plugin-and-file-manager/upload-plugins
 import { HttpClientModule } from '@angular/common/http';
 import { FileService } from './Services/file.service';
 import { PluginService } from './Services/plugin.servive';
-import { TableViewWidgetComponent } from './dashboard/dashboard-canvas/table-view-widget/table-view-widget.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { TableViewWidgetComponent } from './dashboard/dashboard-canvas/table-vie
     BarAndLineChartWidgetComponent,
     PluginConfigurationsComponent,
     WidgetConfigurationsComponent,
-    TableViewWidgetComponent
    ],
   imports: [
     BrowserModule,

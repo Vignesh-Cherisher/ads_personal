@@ -53,6 +53,8 @@ export class DashboardWidgetConfigurationComponent {
       widgetConfiguration: this.widgetConfigFields
     }
     this.widgetDataService.setFormValues(combinedFormData, this.lastActiveWidget)
+    this.chartConfigForm.reset()
+    this.pluginConfigFields = []
   }
 
   onPluginConfigChanged(event: any) {
@@ -76,7 +78,7 @@ export class DashboardWidgetConfigurationComponent {
   }
 
   getPluginConfigFields(event: any) {
-    this.pluginConfigFields = []
+
     let selectedPlugin = event.target.value
     for(let plugin of this.pluginList) {
       if(plugin.name === selectedPlugin) {

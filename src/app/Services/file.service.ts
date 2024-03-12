@@ -12,12 +12,14 @@ export class FileService{
     constructor(private http:HttpClient){}
 
     addFileNames(data: { datasetId: string, pluginName: string, fileName: string }) {
+      localStorage.removeItem('fileNames');
       localStorage.setItem('fileNames', JSON.stringify(data))
       // this.fileNames.push(data);
       // console.log(this.fileNames)
     }
 
     getFileNames(): { datasetId: string, pluginName: string, fileName: string }[] {
+      this.fileNames = []
       this.fileNames.push(JSON.parse(localStorage.getItem('fileNames')));
       console.log(this.fileNames);
       return this.fileNames;
